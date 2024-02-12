@@ -99,34 +99,71 @@ def save_acceptance():
 @app.route('/reactive')
 @login_required
 def reactive():
-    return render_template('reactive.html')
+    customers = read_customers_from_csv('data/reactive_input.csv')
+    return render_template('reactive.html', customers=customers)
 
 @app.route('/search_customer')
 @login_required
 def search_customer():
     registration_id = request.args.get('registrationId')
     if registration_id is None:
-        return 'Registration ID not provided'
-    # Simulate customer lookup in customers.csv
+        return jsonify({"error": "Registration ID not provided"})
+
+    # Simulate customer lookup in reactive_input.csv
     with open('data/reactive_input.csv', 'r') as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip the header row
+        reader = csv.DictReader(file)
         for row in reader:
-            if row[0] == registration_id:
-                return 'found'
-    return 'not found'
+            if row['CustomerID'] == registration_id:
+                return jsonify({
+                    "CustomerID": row['CustomerID'],
+                    "Name": row['Name'],
+                    "Email": row['Email'],
+                    "Phone": row['Phone'],
+                    "Lapse_Propensity": row['Lapse_Propensity'],
+                    "Customer_Lifetime_Value": row['Customer_Lifetime_Value'],
+                    "Call_Agent": row['Call_Agent'],
+                    "Discount_Eligibility": row['Discount_Eligibility'],  # Assuming this field exists in the CSV
+                    "Annual_Premium": row['Annual_Premium']  # Assuming this field exists in the CSV
+                })
+
+    return jsonify({"error": "Customer not found"})
 
 @app.route('/track_outcome', methods=['POST'])
 @login_required
 def track_outcome():
     data = request.get_json()
-    customer_number = request.args.get('customerNumber')
+    registration_id = request.args.get('registrationId')
     outcome = data['outcome']
-    username = current_user.username
-    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # Save outcome to a text file
+    username = data['username']
+    time = datetime.datetime.now()
+
+    # Fetching additional fields from the request data
+    stm_name = data.get('stmName')  # Fetching the STM Name from the request data
+    lapse_propensity = data.get('lapsePropensity')  # Fetching Lapse Propensity
+    customer_lifetime_value = data.get('customerLifetimeValue')  # Fetching Customer Lifetime Value
+    call_agent = data.get('callAgent')  # Fetching Call Agent
+    discount_eligibility = data.get('discountEligibility')  # Fetching Discount Eligibility
+    annual_premium = data.get('annualPremium')  # Fetching Annual Premium
+
+    # Constructing the outcome tracking message
+    outcome_message = f"Registration ID: {registration_id}, Outcome: {outcome}, Username: {username}, Time: {time}"
+    if stm_name is not None:  # Add STM Name to the outcome message if it is not None
+        outcome_message += f", STM Name: {stm_name}"
+    if lapse_propensity:
+        outcome_message += f", Lapse Propensity: {lapse_propensity}"
+    if customer_lifetime_value:
+        outcome_message += f", Customer Lifetime Value: {customer_lifetime_value}"
+    if call_agent:
+        outcome_message += f", Call Agent: {call_agent}"
+    if discount_eligibility:
+        outcome_message += f", Discount Eligibility: {discount_eligibility}"
+    if annual_premium:
+        outcome_message += f", Annual Premium: {annual_premium}"
+
+    # Writing the outcome message to the file
     with open('data/reactive_output.txt', 'a') as file:
-        file.write(f"Customer Number: {customer_number}, Outcome: {outcome}, Username: {username}, Time: {time}\n")
+        file.write(outcome_message + "\n")
+
     return jsonify({"message": "Outcome tracked successfully"})
 
 @app.route('/performance')

@@ -1,3 +1,27 @@
 Customer Number: 1, Outcome: 1_month_free, Username: username, Time: 2024-02-09 23:32:00
 Customer Number: 2, Outcome: 1_month_free, Username: username, Time: 2024-02-09 23:36:34
 Customer Number: None, Outcome: 1_month_free, Username: username, Time: 2024-02-12 09:31:50
+Registration ID: 1, Outcome: Yes, Username: usernameRegistration ID: 1, Outcome: Yes, Username: username, Time: Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:14:52.119601Registration ID: 26, Outcome: Yes, Username: username, Time: 2024-02-12 13:15:00.173081Registration ID: 26, Outcome: No, Username: username, Time: 2024-02-12 13:15:02.598582Registration ID: 2, Outcome: Yes, Username: username, Time: 2024-02-12 13:15:08.161907Registration ID: 26, Outcome: Yes, Username: username, Time: 2024-02-12 13:16:14.447110
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:16:33.891634
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:29:01.974165
+Registration ID: 2, Outcome: Yes, Username: username, Time: 2024-02-12 13:29:43.088849
+Registration ID: 1, Outcome: No, Username: username, Time: 2024-02-12 13:34:56.386488
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:36:40.481289
+Registration ID: 2, Outcome: Yes, Username: username, Time: 2024-02-12 13:38:18.759133, Lapse Propensity: 0.35, Customer Lifetime Value: 1200, Call Agent: Agent B, Discount Eligibility: eligible, Annual Premium: 1100
+Registration ID: 1, Outcome: Maybe, Username: username, Time: 2024-02-12 13:46:57.091390
+Registration ID: 30, Outcome: Maybe, Username: username, Time: 2024-02-12 13:47:22.614790
+Registration ID: 30, Outcome: Yes, Username: username, Time: 2024-02-12 13:48:54.660815
+Registration ID: 30, Outcome: Yes, Username: username, Time: 2024-02-12 13:50:42.408208
+Registration ID: 42, Outcome: Yes, Username: username, Time: 2024-02-12 13:51:05.868453
+Registration ID: 12, Outcome: No, Username: username, Time: 2024-02-12 13:51:17.297937
+Registration ID: 2, Outcome: Maybe, Username: username, Time: 2024-02-12 13:53:22.961645
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:55:14.541876
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 13:59:55.626963
+Registration ID: 1, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:08:29.616835
+Registration ID: , Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:14:33.414900
+Registration ID: 1, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:19:26.764076
+Registration ID: 1, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:21:49.188915
+Registration ID: 1, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:27:04.389098
+Registration ID: 2, Outcome: Yes, Username: username, Time: 2024-02-12 14:27:30.856468
+Registration ID: 1, Outcome: Maybe, Username: username, Time: 2024-02-12 14:29:18.292216, STM Name: 
+Registration ID: 1, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-12 14:33:14.247733, STM Name: 123, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000

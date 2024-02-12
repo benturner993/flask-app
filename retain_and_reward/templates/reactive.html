@@ -20,71 +20,142 @@
             <!-- Result display -->
             <div id="searchResult"></div>
         </div>
-        
+
+        <!-- Middle column for Know Your Customer -->
+        <div style="flex: 1; padding-right: 20px;">
+            <h3>Know Your Customer</h3>
+            <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
+            <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
+            <p>Call Agent: <span id="callAgent"></span></p>
+            <p>Discount Eligibility: <span id="discountEligibility"></span></p>
+            <p>Annual Premium: <span id="annualPremium"></span></p>
+        </div>
+
         <!-- Right column for tracking outcomes -->
-        <div style="flex: 1; margin-left: 20px;">
+        <div style="flex: 1;">
             <h3>Track Outcomes</h3>
             <div style="margin-bottom: 20px;">
-                <p>Logged in as: {{ current_user.username }}</p>
-                <p>Current Time: {{ current_time }}</p>
+                <!-- Hide Logged in as and Current Time -->
+                <p id="loggedInAs" style="display: none;">Logged in as: {{ current_user.username }}</p>
+                <p id="currentTime" style="display: none;">Current Time: {{ current_time }}</p>
             </div>
             <!-- Outcome tracking form -->
-            <form id="outcomeTrackingForm">
+            <form id="outcomeTrackingForm" style="margin-bottom: 20px;">
                 <label for="outcome">Outcome:</label>
-                <select id="outcome" name="outcome">
-                    <option value="1_month_free">1 month free</option>
-                    <option value="no_discount">No discount</option>
+                <select id="outcome" name="outcome" onchange="checkOutcome()" style="margin-right: 10px;">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Maybe">Maybe</option>
+                    <option value="Yes - With STM Override">Yes - With STM Override</option>
+                    <option value="No - With STM Override">No - With STM Override</option>
+                    <option value="Maybe - With STM Override">Maybe - With STM Override</option>
                 </select>
-                <button type="button" onclick="trackOutcome()">Track</button>
+                <!-- STM Name input field -->
+                <div id="stmNameField" style="display: none; margin-bottom: 0;">
+                    <label for="stmName">STM Name:</label>
+                    <input type="text" id="stmName" name="stmName" style="margin-top: 20px;">
+                </div>
+                <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')" style="margin-top: 20px;">Track</button>
             </form>
             <!-- Outcome tracking status -->
             <div id="outcomeStatus"></div>
         </div>
-    </div>
 
     <script>
+
+        function checkOutcome() {
+            var outcome = document.getElementById("outcome").value;
+            var stmNameField = document.getElementById("stmNameField");
+
+            // Check if the outcome includes 'STM'
+            if (outcome.includes('STM')) {
+                stmNameField.style.display = "block";
+            } else {
+                stmNameField.style.display = "none";
+            }
+        }
+
         function searchCustomer() {
             var registrationId = document.getElementById("registrationId").value;
 
-            // Simulated customer lookup
-            var customerFound = false; // Assume customer is not found
-            
             // Perform customer lookup by making an AJAX request to the server
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
             xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = xhr.responseText;
-                    if (response === "found") {
-                        customerFound = true;
-                    }
+                if (xhr.readyState === 4) {
                     var searchResultElement = document.getElementById("searchResult");
-                    if (customerFound) {
-                        searchResultElement.textContent = "You are eligible for 1 month free";
+                    searchResultElement.style.marginTop = "20px"; // Double the spacing size
+                    if (xhr.status === 200) {
+                        // If customer is found, display information
+                        var customerData = JSON.parse(xhr.responseText);
+                        if ("error" in customerData) {
+                            searchResultElement.innerHTML = "<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px;'>" + customerData.error + "</div>";
+                        } else {
+                            var discountEligibility = customerData.Discount_Eligibility;
+                            var annualPremium = customerData.Annual_Premium;
+                            if (discountEligibility === 'eligible') {
+                                searchResultElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>You are eligible for a discount<br>Current Premium: $" + annualPremium + "<br>1-Month Discount: $100<br>New Premium with 1-Month Discount: $" + (annualPremium - 100) + "</div>";
+                            } else {
+                                searchResultElement.innerHTML = "<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px;'>You are not eligible for a discount</div>";
+                            }
+                            // Display additional fields
+                            document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
+                            document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
+                            document.getElementById("callAgent").textContent = customerData.Call_Agent;
+                            document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
+                            document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
+                        }
                     } else {
-                        searchResultElement.textContent = "No discount";
+                        searchResultElement.textContent = "Error occurred while searching for customer";
                     }
                 }
             };
             xhr.send();
         }
 
-        function trackOutcome() {
+        function trackOutcome(username, time) {
             var registrationId = document.getElementById("registrationId").value;
             var outcome = document.getElementById("outcome").value;
+            var stmName = document.getElementById("stmName").value; // Retrieve STM Name value
             var outcomeStatusElement = document.getElementById("outcomeStatus");
-            var username = "{{ current_user.username }}";
-            var time = "{{ current_time }}";
+
+            // Fetching additional fields
+            var lapsePropensity = document.getElementById("lapsePropensity").textContent;
+            var customerLifetimeValue = document.getElementById("customerLifetimeValue").textContent;
+            var callAgent = document.getElementById("callAgent").textContent;
+            var discountEligibility = document.getElementById("discountEligibility").textContent;
+            var annualPremium = document.getElementById("annualPremium").textContent;
+
             // AJAX request to track outcome
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/track_outcome?registrationId=" + registrationId, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    outcomeStatusElement.textContent = "Outcome tracked successfully";
+                    var response = JSON.parse(xhr.responseText);
+                    if ("message" in response) {
+                        outcomeStatusElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>" + response.message + "</div>";
+                    } else {
+                        outcomeStatusElement.textContent = "Error occurred while tracking outcome";
+                    }
+
+                    // Refresh the page after 1 second
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
                 }
             };
-            xhr.send(JSON.stringify({ "outcome": outcome, "username": username, "time": time }));
+            xhr.send(JSON.stringify({
+                "username": username,
+                "time": time,
+                "outcome": outcome,
+                "stmName": stmName, // Send STM Name
+                "lapsePropensity": lapsePropensity, // Send Lapse Propensity
+                "customerLifetimeValue": customerLifetimeValue, // Send Customer Lifetime Value
+                "callAgent": callAgent, // Send Call Agent
+                "discountEligibility": discountEligibility, // Send Discount Eligibility
+                "annualPremium": annualPremium // Send Annual Premium
+            }));
         }
     </script>
 {% endblock %}
