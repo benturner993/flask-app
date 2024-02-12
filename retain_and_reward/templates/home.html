@@ -1,26 +1,43 @@
 <!-- templates/index.html -->
 {% extends "base.html" %}
 
+{% block title %}
+    <title>Welcome to Retain and Reward</title>
+{% endblock %}
+
 {% block content %}
-    <div style="display: flex;">
-        <!-- Left side for text content -->
-        <div style="flex: 1; padding-right: 20px;">
-            <div class="content" style="margin: 20px;"> <!-- Adding margin -->
-                <h1>Welcome to Retain and Reward</h1>
-                <p>Retain and Reward is a comprehensive platform designed to streamline proactive and reactive lapse tasks. It serves as a central hub for managing customer interactions and incentive programs, allowing you to effectively retain and reward your customers.</p>
-                <p>With Retain and Reward, you can:</p>
-                <ul>
-                    <li>Efficiently handle proactive lapse tasks, such as contacting customers before their policies lapse.</li>
-                    <li>Quickly address reactive lapse situations by offering tailored incentive offers to customers.</li>
-                    <li>Track performance metrics to assess the effectiveness of your retention strategies.</li>
-                    <li>Manage and track customer issues to ensure timely resolution and customer satisfaction.</li>
-                </ul>
-                <p>Experience the power of Retain and Reward today and take proactive steps to retain and reward your valuable customers.</p>
+    <div class="content" style="margin: 20px;">
+        <h1>Welcome to Retain and Reward</h1>
+        <p>Retain and Reward is a comprehensive platform designed to streamline reactive, proactive, and win back lapse tasks. It serves as a central hub for managing customer interactions and incentive programs, allowing you to effectively retain and reward our customers here at Bupa.</p>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; position: relative;">
+                <img src="{{ url_for('static', filename='magnifying-glass.svg') }}" alt="Magnifying Glass" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Reactive</h2>
+                <p style="margin-bottom: 100px;">Reactive lapse prevention is crucial because it helps in retaining customers who are at risk of leaving due to dissatisfaction or lack of engagement.</p>
+                <!-- Button at the bottom right -->
+                <a href="/reactive" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reactive</button>
+                </a>
             </div>
-        </div>
-        <!-- Right side for the image -->
-        <div style="flex: 1;">
-            <img src="{{ url_for('static', filename='first-specialist-village.jpeg') }}" alt="First Specialist Village" style="width: 75%; margin: 20px;"> <!-- Resizing and adding margin -->
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative;">
+                <img src="{{ url_for('static', filename='heart-on-hands.svg') }}" alt="Heart on Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Proactive</h2>
+                <p style="margin-bottom: 100px;">Proactive lapse prevention helps in identifying potential issues before they occur, allowing you to address them proactively and maintain customer satisfaction.</p>
+                <!-- Button at the bottom right -->
+                <a href="/proactive" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Proactive</button>
+                </a>
+            </div>
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative;">
+                <img src="{{ url_for('static', filename='hands.svg') }}" alt="Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+                <h2 style="margin-top: 60px;">Win Back</h2>
+                <p style="margin-bottom: 100px;">Win back lapse prevention aims to re-engage customers who have previously left your service, providing an opportunity to regain their trust and loyalty.</p>
+                <!-- Button at the bottom right -->
+                <a href="/winback" style="position: absolute; bottom: 10px; right: 10px;">
+                    <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Win Back</button>
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}
