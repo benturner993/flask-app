@@ -2,9 +2,9 @@
 
 {% block content %}
     <div style="margin-bottom: 20px; margin-left: 20px; margin-right: 20px;">
-        <h2>Reactive</h2>
+        <h2>This is your hub for reactive retention</h2>
         <div style="margin-bottom: 20px;">
-            <p style="margin-bottom: 10px;">Reactive lapse prevention is essential for maintaining customer satisfaction and loyalty. It allows businesses to address potential issues and concerns raised by customers in a timely manner, preventing them from churning or switching to competitors.</p>
+            <p style="margin-bottom: 10px;">Reactive lapse prevention is essential for maintaining customer satisfaction and loyalty. Every great conversation contributes towards our ambition is to be the world's most customer centric healthcare company - committed to providing excellent customer experiences, through great service and value, frictionless access, and quality healthcare.</p>
         </div>
     </div>
     <div style="display: flex; margin-left: 20px; margin-right: 20px;">
@@ -22,7 +22,7 @@
         </div>
 
         <!-- Middle column for Know Your Customer -->
-        <div style="flex: 1; padding-right: 20px;">
+        <div id="knowYourCustomer" style="display: none; flex: 1; padding-right: 20px;">
             <h3>Know Your Customer</h3>
             <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
             <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
@@ -32,7 +32,7 @@
         </div>
 
         <!-- Right column for tracking outcomes -->
-        <div style="flex: 1;">
+        <div id="trackOutcomes" style="display: none; flex: 1;">
             <h3>Track Outcomes</h3>
             <div style="margin-bottom: 20px;">
                 <!-- Hide Logged in as and Current Time -->
@@ -60,6 +60,12 @@
             <!-- Outcome tracking status -->
             <div id="outcomeStatus"></div>
         </div>
+    </div>
+
+    <!-- Static Bupa image -->
+    <div id="bupaImage" style="margin-left: 20px; margin-right: 20px; text-align: center;">
+        <img src="{{ url_for('static', filename='bupa.png') }}" alt="Bupa Logo" style="width: 200px; margin-top: 20px;">
+    </div>
 
     <script>
 
@@ -77,6 +83,9 @@
 
         function searchCustomer() {
             var registrationId = document.getElementById("registrationId").value;
+
+            // Hide the Bupa image
+            document.getElementById("bupaImage").style.display = "none";
 
             // Perform customer lookup by making an AJAX request to the server
             var xhr = new XMLHttpRequest();
@@ -110,6 +119,10 @@
                             document.getElementById("callAgent").textContent = customerData.Call_Agent;
                             document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
                             document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
+
+                            // Show the Know Your Customer and Track Outcomes sections
+                            document.getElementById("knowYourCustomer").style.display = "block";
+                            document.getElementById("trackOutcomes").style.display = "block";
                         }
                     } else {
                         searchResultElement.textContent = "Error occurred while searching for customer";
