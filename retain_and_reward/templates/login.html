@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Reward and Retain</title> <!-- Set the title of the page -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif; /* Change font to Montserrat */
+            background-color: #ffffff; /* White background */
+            color: #0d1846; /* Font color HEX #0d1846 */
+            text-align: center; /* Center align content */
+        }
+        .header {
+            background-color: #0d1846; /* Header background color */
+            color: #ffffff; /* Header font color */
+            padding: 10px;
+        }
+        .footer {
+            background-color: #0d1846; /* Footer background color */
+            color: #ffffff; /* Footer font color */
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .logo {
+            width: 150px; /* Reduced image size */
+            margin-top: 20px; /* Margin from top */
+        }
+        .login-form {
+            margin-top: 50px; /* Margin from top */
+            text-align: center; /* Center align content */
+        }
+        .login-input {
+            width: 300px; /* Input field width */
+            padding: 10px; /* Padding for input fields */
+            margin-top: 20px; /* Margin between input fields */
+        }
+        .login-button {
+            width: 150px; /* Button width */
+            padding: 10px; /* Padding for button */
+            margin-top: 20px; /* Margin from input fields */
+            background-color: #0d1846; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            cursor: pointer; /* Change cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Reward and Retain</div>
+    <img src="{{ url_for('static', filename='bupa.png') }}" class="logo" alt="Bupa Logo">
+    <div class="login-form">
+        <form action="" method="post">
+            <input type="text" name="username" placeholder="Username" class="login-input"><br>
+            <input type="password" name="password" placeholder="Password" class="login-input"><br>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+    </div>
+    <div class="footer">Powered by UKI Consumer</div>
+</body>
+</html>

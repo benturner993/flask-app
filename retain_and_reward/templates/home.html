@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="display: flex;">
+        <!-- Left side for text content -->
+        <div style="flex: 1; padding-right: 20px;">
+            <div class="content" style="margin: 20px;"> <!-- Adding margin -->
+                <h1>Welcome to Retain and Reward</h1>
+                <p>Retain and Reward is a comprehensive platform designed to streamline proactive and reactive lapse tasks. It serves as a central hub for managing customer interactions and incentive programs, allowing you to effectively retain and reward your customers.</p>
+                <p>With Retain and Reward, you can:</p>
+                <ul>
+                    <li>Efficiently handle proactive lapse tasks, such as contacting customers before their policies lapse.</li>
+                    <li>Quickly address reactive lapse situations by offering tailored incentive offers to customers.</li>
+                    <li>Track performance metrics to assess the effectiveness of your retention strategies.</li>
+                    <li>Manage and track customer issues to ensure timely resolution and customer satisfaction.</li>
+                </ul>
+                <p>Experience the power of Retain and Reward today and take proactive steps to retain and reward your valuable customers.</p>
+            </div>
+        </div>
+        <!-- Right side for the image -->
+        <div style="flex: 1;">
+            <img src="{{ url_for('static', filename='first-specialist-village.jpeg') }}" alt="First Specialist Village" style="width: 75%; margin: 20px;"> <!-- Resizing and adding margin -->
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reward and Retain</title>
+    <style>
+        body {
+            padding: 0;
+            font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+            color: #0d1846; /* Body text color */
+        }
+        .header {
+            background-color: #0d1846;
+            color: white; /* Header text color */
+            padding: 10px;
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Space evenly between items */
+            align-items: center; /* Align items vertically */
+        }
+        .toolbar {
+            background-color: #0d1846; /* Toolbar color */
+            color: white; /* Toolbar text color */
+            padding: 2.5px 5px; /* Reduced padding to reduce toolbar height */
+            display: flex; /* Use flexbox */
+            align-items: center; /* Align items vertically */
+        }
+        .toolbar a {
+            color: white; /* Link text color */
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+        .footer {
+            background-color: #0d1846; /* Footer color */
+            color: white; /* Footer text color */
+            padding: 10px;
+            text-align: right; /* Align text to the right */
+            position: fixed;
+            bottom: 0;
+            right: 0; /* Align to the right */
+            width: auto;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #009ee0; /* Blue */
+            border: none;
+            color: white; /* White text */
+            padding: 8px 16px; /* 1/4 of the original size */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px; /* 1/4 of the original size */
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px; /* 1/2 of the original size */
+        }
+
+        /* Change the color of the button on hover */
+        button:hover {
+            background-color: #0084b8; /* Darker blue */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Montserrat font -->
+</head>
+<body>
+    <div class="header">
+        <div class="toolbar">
+            {% if current_user.is_authenticated %}
+                <a href="/">Home</a>
+                <a href="/proactive">Proactive</a>
+                <a href="/reactive">Reactive</a>
+                <a href="/win-back">Win Back</a>
+                <a href="/performance">Performance</a>
+                <a href="/issues-tracking">Issue Tracking</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
+        <img src="{{ url_for('static', filename='bupa.png') }}" class="logo" alt="Logo">
+    </div>
+    {% block content %}{% endblock %}
+    <div class="footer">
+        &copy; 2024 Reward and Retain. Powered by UKI Consumer.
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="display: flex; margin-bottom: 20px; margin-left: 20px; margin-right: 20px;"> <!-- Add margins -->
+        <!-- Introduction text -->
+        <div style="flex: 1; margin-right: 20px;">
+            <h2 style="margin-bottom: 10px;">This is your hub for proactive retention</h2>
+            <p style="margin-bottom: 5px;">Proactive retention is crucial for maintaining customer satisfaction and loyalty. With this platform, you can take proactive steps to retain your valuable customers by anticipating their needs and addressing potential issues before they arise.</p>
+        </div>
+    </div>
+    <div style="display: flex;">
+        <!-- Dialling List -->
+        <div style="flex: 2; margin-right: 20px; margin-left: 20px;"> <!-- Add left margin -->
+            <h3 style="font-size: 16px;">Dialling List</h3>
+            <div style="overflow-y: auto; max-height: 400px;">
+                <ul style="list-style-type: none; padding: 0;">
+                    {% for customer in customers %}
+                        <li><a href="#" onclick="showCustomerDetails('{{ customer.Name }}', '{{ customer.Email }}', '{{ customer.Phone }}', '{{ customer.Lapse_Propensity }}', '{{ customer.Customer_Lifetime_Value }}', '{{ customer.Call_Agent }}')">{{ customer.Name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- Customer Details -->
+        <div style="flex: 4; padding-left: 20px;">
+            <h3 style="font-size: 16px;">Customer Details</h3>
+            <div id="selectedCustomer">
+                <!-- Customer details will be displayed here -->
+            </div>
+        </div>
+        <!-- Outcomes -->
+        <div style="flex: 4; padding-left: 20px;">
+            <h3 style="font-size: 16px;">Outcomes</h3>
+            <div id="acceptanceTracking" style="margin-top: 20px;"> <!-- Add margin-top -->
+                <!-- Acceptance tracking content will be displayed here -->
+                <h4>Did the customer accept?</h4>
+                <select id="acceptance" name="acceptance">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <button type="button" onclick="saveCustomerAcceptance()">Save</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showCustomerDetails(name, email, phone, lapsePropensity, customerLifetimeValue, callAgent) {
+            var customerDetailsDiv = document.getElementById("selectedCustomer");
+            var tableHTML = "<table>";
+            tableHTML += "<tr><th style='text-align: left;'>Name</th><td>" + name + "</td></tr>";
+            tableHTML += "<tr><th style='text-align: left;'>Email</th><td>" + email + "</td></tr>";
+            tableHTML += "<tr><th style='text-align: left;'>Phone</th><td>" + phone + "</td></tr>";
+            tableHTML += "<tr><th style='text-align: left;'>Lapse Propensity</th><td>" + lapsePropensity + "</td></tr>";
+            tableHTML += "<tr><th style='text-align: left;'>Customer Lifetime Value</th><td>" + customerLifetimeValue + "</td></tr>";
+            tableHTML += "<tr><th style='text-align: left;'>Call Agent</th><td>" + callAgent + "</td></tr>";
+            tableHTML += "</table>";
+            customerDetailsDiv.innerHTML = tableHTML;
+        }
+
+        function saveCustomerAcceptance() {
+            var acceptance = document.getElementById("acceptance").value;
+            var customerName = document.getElementById("selectedCustomer").querySelector("tr:first-child td:last-child").textContent; // Extract customer name from displayed details
+            var currentTime = new Date().toLocaleString(); // Get current time
+            // AJAX request to save acceptance
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/save_acceptance", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle response if needed
+                    console.log("Acceptance saved successfully");
+                }
+            };
+            xhr.send(JSON.stringify({ "customerName": customerName, "acceptance": acceptance, "username": "{{ current_user.username }}", "time": currentTime }));
+        }
+    </script>
+{% endblock %}

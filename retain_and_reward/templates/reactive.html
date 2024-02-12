@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin-bottom: 20px; margin-left: 20px; margin-right: 20px;">
+        <h2>Reactive</h2>
+        <div style="margin-bottom: 20px;">
+            <p style="margin-bottom: 10px;">Reactive lapse prevention is essential for maintaining customer satisfaction and loyalty. It allows businesses to address potential issues and concerns raised by customers in a timely manner, preventing them from churning or switching to competitors.</p>
+        </div>
+    </div>
+    <div style="display: flex; margin-left: 20px; margin-right: 20px;">
+        <!-- Left column for search functionality -->
+        <div style="flex: 1; padding-right: 20px;">
+            <h3>Search Customer</h3>
+            <!-- Search form -->
+            <form id="searchForm">
+                <label for="registrationId">Registration ID:</label>
+                <input type="text" id="registrationId" name="registrationId">
+                <button type="button" onclick="searchCustomer()">Search</button>
+            </form>
+            <!-- Result display -->
+            <div id="searchResult"></div>
+        </div>
+        
+        <!-- Right column for tracking outcomes -->
+        <div style="flex: 1; margin-left: 20px;">
+            <h3>Track Outcomes</h3>
+            <div style="margin-bottom: 20px;">
+                <p>Logged in as: {{ current_user.username }}</p>
+                <p>Current Time: {{ current_time }}</p>
+            </div>
+            <!-- Outcome tracking form -->
+            <form id="outcomeTrackingForm">
+                <label for="outcome">Outcome:</label>
+                <select id="outcome" name="outcome">
+                    <option value="1_month_free">1 month free</option>
+                    <option value="no_discount">No discount</option>
+                </select>
+                <button type="button" onclick="trackOutcome()">Track</button>
+            </form>
+            <!-- Outcome tracking status -->
+            <div id="outcomeStatus"></div>
+        </div>
+    </div>
+
+    <script>
+        function searchCustomer() {
+            var registrationId = document.getElementById("registrationId").value;
+
+            // Simulated customer lookup
+            var customerFound = false; // Assume customer is not found
+            
+            // Perform customer lookup by making an AJAX request to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    if (response === "found") {
+                        customerFound = true;
+                    }
+                    var searchResultElement = document.getElementById("searchResult");
+                    if (customerFound) {
+                        searchResultElement.textContent = "You are eligible for 1 month free";
+                    } else {
+                        searchResultElement.textContent = "No discount";
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function trackOutcome() {
+            var registrationId = document.getElementById("registrationId").value;
+            var outcome = document.getElementById("outcome").value;
+            var outcomeStatusElement = document.getElementById("outcomeStatus");
+            var username = "{{ current_user.username }}";
+            var time = "{{ current_time }}";
+            // AJAX request to track outcome
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome?registrationId=" + registrationId, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    outcomeStatusElement.textContent = "Outcome tracked successfully";
+                }
+            };
+            xhr.send(JSON.stringify({ "outcome": outcome, "username": username, "time": time }));
+        }
+    </script>
+{% endblock %}
