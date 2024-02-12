@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to Reward and Retain</title> <!-- Set the title of the page -->
+    <title>Register for Reward and Retain</title> <!-- Set the title of the page -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -32,7 +32,7 @@
             width: 150px; /* Reduced image size */
             margin-top: 20px; /* Margin from top */
         }
-        .login-form {
+        .register-form {
             margin-top: 50px; /* Margin from top */
             text-align: center; /* Center align content */
         }
@@ -50,18 +50,22 @@
             border: none; /* Remove border */
             cursor: pointer; /* Change cursor on hover */
         }
+        .homepage-link {
+            margin-top: 20px; /* Margin from register form */
+            font-size: 14px; /* Font size for homepage link */
+        }
     </style>
 </head>
 <body>
     <div class="header">Reward and Retain</div>
     <img src="{{ url_for('static', filename='bupa.png') }}" class="logo" alt="Bupa Logo">
-    <div class="login-form">
+    <div class="register-form">
         <form action="" method="post">
             <input type="text" name="username" placeholder="Username" class="login-input"><br>
             <input type="password" name="password" placeholder="Password" class="login-input"><br>
-            <button type="submit" class="login-button">Login</button>
+            <button type="submit" class="login-button">Register for the App</button>
         </form>
-        <p>If you do not have access, please <a href="{{ url_for('register') }}">request here</a>.</p>
+        <p class="homepage-link">Go back to <a href="{{ url_for('home') }}">homepage</a>.</p>
     </div>
     <div class="footer">Powered by UKI Consumer</div>
 </body>

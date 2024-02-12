@@ -90,13 +90,19 @@
                         var customerData = JSON.parse(xhr.responseText);
                         if ("error" in customerData) {
                             searchResultElement.innerHTML = "<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px;'>" + customerData.error + "</div>";
+                            // Track the outcome of not found
+                            trackOutcomeNotFound(registrationId); // Pass registrationId as an argument
                         } else {
                             var discountEligibility = customerData.Discount_Eligibility;
                             var annualPremium = customerData.Annual_Premium;
                             if (discountEligibility === 'eligible') {
                                 searchResultElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>You are eligible for a discount<br>Current Premium: $" + annualPremium + "<br>1-Month Discount: $100<br>New Premium with 1-Month Discount: $" + (annualPremium - 100) + "</div>";
+                                // Track the outcome of being eligible
+                                trackOutcomeEligible(registrationId); // Pass registrationId as an argument
                             } else {
                                 searchResultElement.innerHTML = "<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px;'>You are not eligible for a discount</div>";
+                                // Track the outcome of not eligible
+                                trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
                             }
                             // Display additional fields
                             document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
@@ -111,6 +117,45 @@
                 }
             };
             xhr.send();
+        }
+
+        function trackOutcomeEligible(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_eligible", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
+        }
+
+        function trackOutcomeNotFound(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_not_found", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
+        }
+
+        function trackOutcomeNotEligible(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_not_eligible", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
         }
 
         function trackOutcome(username, time) {

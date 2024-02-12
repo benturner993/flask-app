@@ -1,3 +1,4 @@
+
 import csv
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -10,8 +11,16 @@ app.secret_key = '123'
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# Mock user database (replace this with your actual user database)
-users = {'username': {'password': 'password'}}  
+# Load user credentials from CSV
+def load_user_credentials():
+    users = {}
+    with open('data/user_credentials.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            users[row['username']] = {'password': row['password']}
+    return users
+
+users = load_user_credentials()
 
 # User class required by Flask-Login
 class User(UserMixin):
@@ -47,6 +56,28 @@ def login():
     else:
         print("Received GET request for login page")
     return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username and password:
+            # Check if the username already exists
+            if username in users:
+                return 'Username already exists. Please choose a different username.'
+            else:
+                # Add the new user to the database and update the CSV file
+                users[username] = {'password': password}
+                with open('user_credentials.csv', 'a', newline='') as csvfile:
+                    fieldnames = ['username', 'password']
+                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    writer.writerow({'username': username, 'password': password})
+                return 'Registration successful. You can now login with your new account.'
+        else:
+            return 'Username and password are required fields.'
+    else:
+        return render_template('register.html')
 
 @app.route('/logout')
 @login_required
@@ -138,17 +169,15 @@ def track_outcome():
     time = datetime.datetime.now()
 
     # Fetching additional fields from the request data
+    lapse_propensity = data.get('lapsePropensity')
+    customer_lifetime_value = data.get('customerLifetimeValue')
+    call_agent = data.get('callAgent')
+    discount_eligibility = data.get('discountEligibility')
+    annual_premium = data.get('annualPremium')
     stm_name = data.get('stmName')  # Fetching the STM Name from the request data
-    lapse_propensity = data.get('lapsePropensity')  # Fetching Lapse Propensity
-    customer_lifetime_value = data.get('customerLifetimeValue')  # Fetching Customer Lifetime Value
-    call_agent = data.get('callAgent')  # Fetching Call Agent
-    discount_eligibility = data.get('discountEligibility')  # Fetching Discount Eligibility
-    annual_premium = data.get('annualPremium')  # Fetching Annual Premium
 
     # Constructing the outcome tracking message
     outcome_message = f"Registration ID: {registration_id}, Outcome: {outcome}, Username: {username}, Time: {time}"
-    if stm_name is not None:  # Add STM Name to the outcome message if it is not None
-        outcome_message += f", STM Name: {stm_name}"
     if lapse_propensity:
         outcome_message += f", Lapse Propensity: {lapse_propensity}"
     if customer_lifetime_value:
@@ -159,11 +188,46 @@ def track_outcome():
         outcome_message += f", Discount Eligibility: {discount_eligibility}"
     if annual_premium:
         outcome_message += f", Annual Premium: {annual_premium}"
+    if stm_name is not None:  # Add STM Name to the outcome message if it is not None
+        outcome_message += f", STM Name: {stm_name}"
 
     # Writing the outcome message to the file
-    with open('data/reactive_output.txt', 'a') as file:
+    with open('data/reactive_intervention_outcome.txt', 'a') as file:
         file.write(outcome_message + "\n")
 
+    return jsonify({"message": "Outcome tracked successfully"})
+
+@app.route('/track_outcome_not_found', methods=['POST'])
+@login_required
+def track_outcome_not_found():
+    data = request.get_json()
+    registration_id = data.get('registrationId')  # Use get() to avoid KeyError if 'registrationId' is not in data
+    username = current_user.username
+    time = datetime.datetime.now()
+    with open('data/reactive_eligibility.txt', 'a') as file:
+        file.write(f"Outcome: not found, Registration ID {registration_id}, Username: {username}, Time: {time}\n")
+    return jsonify({"message": "Outcome tracked successfully"})
+
+@app.route('/track_outcome_not_eligible', methods=['POST'])
+@login_required
+def track_outcome_not_eligible():
+    data = request.get_json()
+    registration_id = data.get('registrationId')  # Use get() to avoid KeyError if 'registrationId' is not in data
+    username = current_user.username
+    time = datetime.datetime.now()
+    with open('data/reactive_eligibility.txt', 'a') as file:
+        file.write(f"Outcome: not eligible, Registration ID {registration_id}, Username: {username}, Time: {time}\n")
+    return jsonify({"message": "Outcome tracked successfully"})
+
+@app.route('/track_outcome_eligible', methods=['POST'])
+@login_required
+def track_outcome_eligible():
+    data = request.get_json()
+    registration_id = data.get('registrationId')
+    username = current_user.username
+    time = datetime.datetime.now()
+    with open('data/reactive_eligibility.txt', 'a') as file:
+        file.write(f"Outcome: eligible, Registration ID {registration_id}, Username: {username}, Time: {time}\n")
     return jsonify({"message": "Outcome tracked successfully"})
 
 @app.route('/performance')
