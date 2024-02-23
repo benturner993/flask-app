@@ -8,25 +8,26 @@
 <div style="margin: 0; padding: 0;">
 
     <!-- Header for Reactive Offers with full width -->
-    <!-- Include the picture as the background and change text color to white -->
-    <div style="text-align: center; padding: 20px; background-image: url('static/large-high-res-woman-dancing-blue.jpg'); background-size: cover; background-position: center; color: white; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
-        <h1>Reactive Offers</h1>
+    <!-- Include the picture as the background, adjusted to show a different part of the photo -->
+    <div style="text-align: center; padding: 20px; background-image: url('static/online-Playing-catch.png'); background-size: cover; background-position: center 35%; color: white; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
+        <h1>Your Hub for Reactive Retention</h1>
         <p>Retaining our most valuable customers who are on the verge of leaving by offering them tailored incentives, such as allocating 1, 2, or 3 months free.</p>
     </div>
 
 </div>
 
-    <!-- Search functionality -->
-    <div style="max-width: 800px; margin: 0 auto; padding-top: 20px;">
-        <h3>Search for a Customer...</h3>
-        <form id="searchForm" style="display: flex; align-items: center; gap: 10px;">
-            <input type="text" id="registrationId" name="registrationId" style="width: 500px; height: 34px;">
-            <button type="button" onclick="searchCustomer()" style="width: 100px; height: 34px;">Search</button>
-            <!-- Change the background color of the reset button to #b72900 -->
-            <button type="button" onclick="window.location.reload();" style="width: 100px; height: 34px; background-color: #b72900; color: white;">Reset</button>
-        </form>
-        <div id="searchResult"></div>
-    </div>
+<!-- Search functionality -->
+<div style="max-width: 800px; margin: 0 auto; padding-top: 20px;">
+    <h4>Find a Customer</h4>
+    <form id="searchForm" style="display: flex; align-items: center; gap: 10px;">
+        <input type="text" id="registrationId" name="registrationId" style="width: 500px; height: 34px;">
+        <!-- Adjusted button styles to use Montserrat SemiBold -->
+        <button type="button" onclick="searchCustomer()" style="width: 100px; height: 34px; font-family: 'Montserrat', sans-serif; font-weight: 500;">Search</button>
+        <!-- Adjusted button styles to use Montserrat SemiBold and changed background color -->
+        <button type="button" onclick="window.location.reload();" style="width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;">Reset</button>
+    </form>
+    <div id="searchResult"></div>
+</div>
 
     <!-- Know Your Customer Component -->
     <div id="knowYourCustomer" style="display: none; margin-top: 20px;">

@@ -6,21 +6,26 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content" style="margin: 20px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-        <!-- Adding the elephant.png above the header -->
-        <img src="{{ url_for('static', filename='elephant.png') }}" alt="Elephant" style="width: 125px; display: block; margin: 0 auto;">
 
-        <!-- Adding whitespace above the header -->
-        <div style="margin-top: 20px;"></div>
+<!-- Apply a CSS reset here to remove any top margin that could be affecting the layout -->
+<div style="margin-left: 20px; margin-right: 20px; margin-top: -20px;">
 
+<div style="margin: 0; padding: 0;">
+
+    <!-- Header for Reactive Offers with full width -->
+    <!-- Include the picture as the background, adjusted to show a different part of the photo -->
+    <div style="text-align: center; padding: 20px; background-image: url('static/online-Person-sleeping-with-a-dog.png'); background-size: cover; background-position: center 35%; color: white; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
         <h3 style="margin-top: 40px; margin-bottom: 20px; text-align: center;">Welcome to Reward and Retain</h3>
         <h1 style="margin-top: 20px; margin-bottom: 20px; text-align: center;">What can we help you with today?</h1>
+    </div>
+
+</div>
 
         <!-- Adding whitespace below the header -->
-        <div style="margin-bottom: 30px;"></div>
+        <div style="margin-bottom: 60px;"></div>
 
         <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-            <div class="box" style="background-color: #ddedf8; flex: 1; padding: 20px; border-radius: 5px; position: relative; height: 225px;">
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; position: relative; height: 225px;">
                 <img src="{{ url_for('static', filename='leaders.png') }}" alt="Magnifying Glass" style="width: 50px; position: absolute; top: 10px; left: 10px;">
                 <h2 style="margin-top: 60px; font-size: 18px;">Reactive Offers</h2>
                 <p style="margin-bottom: 100px;">Retaining our most valuable customers who are on the verge of leaving by offering them tailored incentives, such as allocating 1, 2, or 3 months free.</p>
@@ -29,7 +34,7 @@
                     <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reactive</button>
                 </a>
             </div>
-            <div class="box" style="background-color: #ddedf8; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative; height: 225px;">
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 30px; position: relative; height: 225px;">
                 <img src="{{ url_for('static', filename='magnifying-glass.svg') }}" alt="Heart on Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
                 <h2 style="margin-top: 60px; font-size: 18px;">Proactive Contact</h2>
                 <p style="margin-bottom: 100px;">Contacting our customers to ensure that they are aware of our offerings, happy with our services and reinforcing the value-for-money.</p>
@@ -38,7 +43,7 @@
                     <button style="font-family: 'Montserrat', sans-serif; background-color: #0079c8; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Proactive</button>
                 </a>
             </div>
-            <div class="box" style="background-color: #ddedf8; flex: 1; padding: 20px; border-radius: 5px; margin-left: 10px; position: relative; height: 225px;">
+            <div class="box" style="background-color: #f1efeb; flex: 1; padding: 20px; border-radius: 5px; margin-left: 30px; position: relative; height: 225px;">
                 <img src="{{ url_for('static', filename='hands.svg') }}" alt="Hands" style="width: 50px; position: absolute; top: 10px; left: 10px;">
                 <h2 style="margin-top: 60px; font-size: 18px;">Win Back Opportunities</h2>
                 <p style="margin-bottom: 100px;">Win back lapse prevention aims to re-engage customers who have previously left your service, providing an opportunity to regain their trust and loyalty.</p>
