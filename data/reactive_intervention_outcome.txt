@@ -17,3 +17,5 @@ Registration ID: 1, Outcome: Yes, Username: test123, Time: 2024-02-22 21:40:16.5
 Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.061776, STM Name: 
 Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.263822, STM Name: 
 Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.420832, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-23 08:51:31.926166, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: Yes, Username: test123, Time: 2024-02-23 12:38:36.358496, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
