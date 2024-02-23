@@ -7,14 +7,17 @@
 
 {% block content %}
     <div class="content" style="margin: 20px; max-width: 1200px; margin-left: auto; margin-right: auto;">
-        <!-- Adding whitespace above the header -->
-        <div style="margin-top: 60px;"></div>
+        <!-- Adding the elephant.png above the header -->
+        <img src="{{ url_for('static', filename='elephant.png') }}" alt="Elephant" style="width: 125px; display: block; margin: 0 auto;">
 
-        <h3 style="margin-top: 20px; margin-bottom: 20px; text-align: center;">Welcome to Reward and Retain</h3>
+        <!-- Adding whitespace above the header -->
+        <div style="margin-top: 20px;"></div>
+
+        <h3 style="margin-top: 40px; margin-bottom: 20px; text-align: center;">Welcome to Reward and Retain</h3>
         <h1 style="margin-top: 20px; margin-bottom: 20px; text-align: center;">What can we help you with today?</h1>
 
         <!-- Adding whitespace below the header -->
-        <div style="margin-bottom: 80px;"></div>
+        <div style="margin-bottom: 30px;"></div>
 
         <div style="display: flex; justify-content: space-between; margin-top: 20px;">
             <div class="box" style="background-color: #ddedf8; flex: 1; padding: 20px; border-radius: 5px; position: relative; height: 225px;">
