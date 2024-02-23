@@ -9,16 +9,16 @@
 
     <!-- Header for Reactive Offers with full width -->
     <!-- Include the picture as the background, adjusted to show a different part of the photo -->
-    <div style="text-align: center; padding: 20px; background-image: url('static/online-Playing-catch.png'); background-size: cover; background-position: center 35%; color: white; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
+    <div style="text-align: center; padding: 20px; background-image: url('static/online-Swimming-butterfly.png'); background-size: cover; background-position: center 60%; color: black; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
         <h1>Your Hub for Reactive Retention</h1>
-        <p>Retaining our most valuable customers who are on the verge of leaving by offering them tailored incentives, such as allocating 1, 2, or 3 months free.</p>
+<!--        <p>Retaining our most valuable customers who are on the verge of leaving by offering them tailored incentives, such as allocating 1, 2, or 3 months free.</p>-->
     </div>
 
 </div>
 
 <!-- Search functionality -->
 <div style="max-width: 800px; margin: 0 auto; padding-top: 20px;">
-    <h4>Find a Customer</h4>
+    <h2>Search for a Customer</h2>
     <form id="searchForm" style="display: flex; align-items: center; gap: 10px;">
         <input type="text" id="registrationId" name="registrationId" style="width: 500px; height: 34px;">
         <!-- Adjusted button styles to use Montserrat SemiBold -->
@@ -27,6 +27,8 @@
         <button type="button" onclick="window.location.reload();" style="width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;">Reset</button>
     </form>
     <div id="searchResult"></div>
+<!--        <p>Retaining our most valuable customers who are on the verge of leaving by offering them tailored incentives, such as allocating 1, 2, or 3 months free.</p>-->
+
 </div>
 
     <!-- Know Your Customer Component -->
@@ -76,54 +78,56 @@
             }
         }
 
-        function searchCustomer() {
-            var registrationId = document.getElementById("registrationId").value;
+    function searchCustomer() {
+        var registrationId = document.getElementById("registrationId").value;
 
-            // Perform customer lookup by making an AJAX request to the server
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    var searchResultElement = document.getElementById("searchResult");
-                    searchResultElement.style.marginTop = "20px"; // Adjust spacing if needed
-                    if (xhr.status === 200) {
-                        // If customer is found, display information
-                        var customerData = JSON.parse(xhr.responseText);
-                        if ("error" in customerData) {
-                            searchResultElement.innerHTML = `<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px; width: 490px;'>` + customerData.error + `</div>`;
-                            // Track the outcome of not found
-                            trackOutcomeNotFound(registrationId); // Pass registrationId as an argument
-                        } else {
-                            var discountEligibility = customerData.Discount_Eligibility;
-                            var annualPremium = customerData.Annual_Premium;
-                            if (discountEligibility === 'eligible') {
-                                searchResultElement.innerHTML = `<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Eligible for a discount<br>Current Premium: $` + annualPremium + `<br>1-Month Discount: $100<br>New Premium with 1-Month Discount: $` + (annualPremium - 100) + `</div>`;
-                                // Track the outcome of being eligible
-                                trackOutcomeEligible(registrationId); // Pass registrationId as an argument
-                            } else {
-                                searchResultElement.innerHTML = `<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Not eligible for a discount</div>`;
-                                // Track the outcome of not eligible
-                                trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
-                            }
-                            // Display additional fields
-                            document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
-                            document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
-                            document.getElementById("callAgent").textContent = customerData.Call_Agent;
-                            document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
-                            document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
+        // Hide the search box and button immediately after the search is initiated
+        document.getElementById("searchForm").style.display = "none";
 
-                            // Show the Know Your Customer and Track Outcomes sections
-                            document.getElementById("knowYourCustomer").style.display = "block";
-                            document.getElementById("trackOutcomes").style.display = "block";
-                        }
+        // Perform customer lookup by making an AJAX request to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var searchResultElement = document.getElementById("searchResult");
+                searchResultElement.style.marginTop = "20px"; // Adjust spacing if needed
+                if (xhr.status === 200) {
+                    // If customer is found, display information
+                    var customerData = JSON.parse(xhr.responseText);
+                    if ("error" in customerData) {
+                        searchResultElement.innerHTML = `<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px; width: 490px;'>` + customerData.error + `</div>`;
+                        // Track the outcome of not found
+                        trackOutcomeNotFound(registrationId); // Pass registrationId as an argument
                     } else {
-                        searchResultElement.textContent = "Error occurred while searching for customer";
-                    }
-                }
-            };
-            xhr.send();
-        }
+                        var discountEligibility = customerData.Discount_Eligibility;
+                        var annualPremium = customerData.Annual_Premium;
+                        if (discountEligibility === 'eligible') {
+                            searchResultElement.innerHTML = `<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Eligible for a discount<br>Current Premium: $` + annualPremium + `<br>1-Month Discount: $100<br>New Premium with 1-Month Discount: $` + (annualPremium - 100) + `</div>`;
+                            // Track the outcome of being eligible
+                            trackOutcomeEligible(registrationId); // Pass registrationId as an argument
+                        } else {
+                            searchResultElement.innerHTML = `<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Not eligible for a discount</div>`;
+                            // Track the outcome of not eligible
+                            trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
+                        }
+                        // Display additional fields
+                        document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
+                        document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
+                        document.getElementById("callAgent").textContent = customerData.Call_Agent;
+                        document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
+                        document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
 
+                        // Show the Know Your Customer and Track Outcomes sections
+                        document.getElementById("knowYourCustomer").style.display = "block";
+                        document.getElementById("trackOutcomes").style.display = "block";
+                    }
+                } else {
+                    searchResultElement.textContent = "Error occurred while searching for customer";
+                }
+            }
+        };
+        xhr.send();
+    }
         function trackOutcomeEligible(registrationId) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "/track_outcome_eligible", true);
