@@ -1,3 +1,4 @@
+<!-- templates/index.html -->
 {% extends "base.html" %}
 
 {% block content %}
@@ -32,12 +33,14 @@
             <h3 style="font-size: 16px;">Outcomes</h3>
             <div id="acceptanceTracking" style="margin-top: 20px;"> <!-- Add margin-top -->
                 <!-- Acceptance tracking content will be displayed here -->
-                <h4>Did the customer accept?</h4>
-                <select id="acceptance" name="acceptance">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-                <button type="button" onclick="saveCustomerAcceptance()">Save</button>
+                <div>
+                    <h4 style="display: inline-block;">Did the customer accept?</h4>
+                    <select id="acceptance" name="acceptance" style="margin-left: 10px;"> <!-- Add margin-left -->
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <button type="button" onclick="saveCustomerAcceptance()" style="margin-left: 10px;">Save</button> <!-- Add margin-left -->
+                </div>
             </div>
         </div>
     </div>

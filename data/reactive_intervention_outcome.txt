@@ -1,0 +1,19 @@
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 15:39:13.604451, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: username, Time: 2024-02-12 16:56:58.928041, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: No, Username: username, Time: 2024-02-12 17:41:14.733598, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 22, Outcome: Yes, Username: username, Time: 2024-02-12 18:22:32.485707, Lapse Propensity: 0.15, Customer Lifetime Value: 850, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 2050, STM Name: 
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-12 19:10:24.980601, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: No - With STM Override, Username: username, Time: 2024-02-13 08:06:37.669148, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 123
+Registration ID: 1, Outcome: Maybe, Username: username, Time: 2024-02-13 12:40:58.636119, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: No, Username: username, Time: 2024-02-13 14:20:31.867356, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 26, Outcome: Yes - With STM Override, Username: username, Time: 2024-02-13 14:20:47.052640, Lapse Propensity: 0.4, Customer Lifetime Value: 1950, Call Agent: Agent B, Discount Eligibility: not eligible, Annual Premium: 2250, STM Name: 123
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-14 09:13:08.196344, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: Yes, Username: username, Time: 2024-02-14 13:25:50.607936, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-19 10:39:32.081991, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: No, Username: test123, Time: 2024-02-22 18:00:31.246183, Lapse Propensity: 0.25, Customer Lifetime Value: 1500, Call Agent: Agent A, Discount Eligibility: eligible, Annual Premium: 1000, STM Name: 
+Registration ID: 1, Outcome: Yes, Username: test123, Time: 2024-02-22 21:37:33.949723, STM Name: 
+Registration ID: 1, Outcome: Yes - With STM Override, Username: test123, Time: 2024-02-22 21:38:03.403340, STM Name: 
+Registration ID: 1, Outcome: Yes, Username: test123, Time: 2024-02-22 21:40:16.574333, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.061776, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.263822, STM Name: 
+Registration ID: 1, Outcome: Maybe, Username: test123, Time: 2024-02-22 21:45:40.420832, STM Name: 

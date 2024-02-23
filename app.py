@@ -69,7 +69,7 @@ def register():
             else:
                 # Add the new user to the database and update the CSV file
                 users[username] = {'password': password}
-                with open('user_credentials.csv', 'a', newline='') as csvfile:
+                with open('data/user_credentials.csv', 'a', newline='') as csvfile:
                     fieldnames = ['username', 'password']
                     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                     writer.writerow({'username': username, 'password': password})

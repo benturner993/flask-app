@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('/static/bupa-health-assessments.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            width: calc(100% - 40px); /* Adjust the width */
+        }
+        .search-text {
+            margin-bottom: 10px;
+            text-align: center; /* Center the text */
+        }
+        .search-form {
+            display: flex;
+            justify-content: center; /* Center elements horizontally */
+            align-items: center; /* Center elements vertically */
+            width: 100%;
+            margin-bottom: 10px; /* Add space between input and button */
+        }
+        .search-container input[type="text"],
+        .search-container button {
+            height: 30px; /* Set height to 30px */
+            margin-right: 10px; /* Add space between input and button */
+        }
+        .search-container input[type="text"] {
+            width: 300px; /* Set width to 300px */
+            border: 1px solid #ccc;
+            padding: 0 10px;
+        }
+        .search-container button {
+            width: 75px; /* Set width to 75px */
+            border: none;
+            background-color: #0079c8;
+            color: #fff;
+            padding: 0 10px;
+            font-family: 'Montserrat', sans-serif; /* Change font to Montserrat */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0079c8;
+            color: white;
+        }
+        /* Align the "Know your Customer" heading and table to the left */
+        .left-content {
+            text-align: left;
+            width: 100%;
+            margin-left: 25px;
+        }
+        .result-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .result-container .left-content {
+            width: calc(50% - 10px);
+        }
+        .result-container .right-content {
+            width: calc(50% - 10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-container .right-content form {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .result-container .right-content form button {
+            width: 100px;
+            height: 40px;
+            margin: 0;
+        }
+
+        /* New styles for equalizing height and width */
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(50% - 10px);
+        }
+
+        /* Style for reset button */
+        #resetButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6347; /* Red color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center; /* Center the text */
+            line-height: 3px; /* Center the text vertically */
+        }
+
+        /* New style for customer not found message */
+        #customerNotFound {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+
+    <div class="search-container" id="searchContainer">
+        <div class="search-text" id="searchText">Search for a Registration ID</div>
+        <form id="searchForm" class="search-form">
+            <div style="display: flex; align-items: center;"> <!-- Adjust alignment here -->
+                <input type="text" id="registrationId" name="registrationId">
+                <button type="button" id="searchButton" onclick="searchCustomer()">Search</button>
+            </div>
+        </form>
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <div class="section-container">
+                <h2 id="knowYourCustomer" style="display: none;">Know your Customer</h2>
+                <div id="searchResult"></div>
+                <div id="customerNotFound"></div> <!-- Display "Customer not found..." message -->
+            </div>
+            <div class="section-container">
+                <div id="trackOutcomes">
+                    <h2>Track Outcomes</h2>
+                    <form id="outcomeTrackingForm" style="margin-bottom: 20px;">
+                        <label for="outcome">Outcome:</label>
+                        <select id="outcome" name="outcome" onchange="checkOutcome()" style="margin-right: 10px; height: 30px;"> <!-- Adjust height here -->
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Maybe">Maybe</option>
+                            <option value="Yes - With STM Override">Yes - With STM Override</option>
+                            <option value="No - With STM Override">No - With STM Override</option>
+                            <option value="Maybe - With STM Override">Maybe - With STM Override</option>
+                        </select>
+                        <div id="stmNameField" style="display: none; margin-bottom: 0;">
+                            <label for="stmName">STM Name:</label>
+                            <input type="text" id="stmName" name="stmName" style="margin-top: 20px; height: 30px;"> <!-- Adjust height here -->
+                        </div>
+                        <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')" style="margin-top: 20px; height: 30px;">Track</button> <!-- Adjust height here -->
+                    </form>
+                    <div id="outcomeStatus"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Reset button -->
+        <button id="resetButton" onclick="resetSearch()">Reset</button>
+    </div>
+
+    <script>
+    function trackOutcome(username, time) {
+        var registrationId = document.getElementById("registrationId").value;
+        var outcome = document.getElementById("outcome").value;
+        var stmName = document.getElementById("stmName").value; // Retrieve STM Name value
+        var outcomeStatusElement = document.getElementById("outcomeStatus");
+
+        // AJAX request to track outcome
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/track_outcome?registrationId=" + registrationId, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if ("message" in response) {
+                    outcomeStatusElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>" + response.message + "</div>";
+                } else {
+                    outcomeStatusElement.textContent = "Error occurred while tracking outcome";
+                }
+
+                // Refresh the page after 1 second
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1500);
+            }
+        };
+        xhr.send(JSON.stringify({
+            "username": username,
+            "time": time,
+            "outcome": outcome,
+            "stmName": stmName // Send STM Name
+        }));
+    }
+
+        function searchCustomer() {
+            var registrationId = document.getElementById("registrationId").value;
+            var searchResultElement = document.getElementById("searchResult");
+            var searchTextElement = document.getElementById("searchText");
+            var searchFormElement = document.getElementById("searchForm");
+            var resultContainer = document.getElementById("resultContainer");
+            var knowYourCustomerElement = document.getElementById("knowYourCustomer");
+            var customerNotFoundElement = document.getElementById("customerNotFound"); // New element for customer not found message
+
+            searchTextElement.style.display = "none";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    searchResultElement.style.marginTop = "20px";
+                    if (xhr.status === 200) {
+                        var customerData = JSON.parse(xhr.responseText);
+                        if ("error" in customerData) {
+                            // Display customer not found message
+                            customerNotFoundElement.textContent = "Customer not found...";
+                            customerNotFoundElement.style.display = "block";
+                            // Track outcome not found
+                            trackOutcomeNotFound(registrationId);
+                        } else {
+                            // Hide customer not found message if previously displayed
+                            customerNotFoundElement.style.display = "none";
+                            var tableHTML = "<table>";
+                            for (var key in customerData) {
+                                tableHTML += "<tr>";
+                                tableHTML += "<th>" + key + "</th>";
+                                tableHTML += "<td>" + customerData[key] + "</td>";
+                                tableHTML += "</tr>";
+                            }
+                            tableHTML += "</table>";
+                            searchResultElement.innerHTML = tableHTML;
+                            searchFormElement.style.display = "none";
+                            knowYourCustomerElement.style.display = "block";
+                            resultContainer.style.display = "flex";
+                            // Track outcome eligible or not eligible
+                            if (customerData.Discount_Eligibility === 'eligible') {
+                                trackOutcomeEligible(registrationId);
+                            } else {
+                                trackOutcomeNotEligible(registrationId);
+                            }
+                        }
+                    } else {
+                        searchResultElement.textContent = "Error occurred while searching for customer";
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Function to reset the search
+        function resetSearch() {
+            // Reset input field value
+            document.getElementById("registrationId").value = "";
+            // Clear search result
+            document.getElementById("searchResult").innerHTML = "";
+            // Show search text
+            document.getElementById("searchText").style.display = "block";
+            // Show search form
+            document.getElementById("searchForm").style.display = "flex";
+            // Hide result container
+            document.getElementById("resultContainer").style.display = "none";
+            // Hide "Know your Customer" heading
+            document.getElementById("knowYourCustomer").style.display = "none";
+            // Hide customer not found message
+            document.getElementById("customerNotFound").style.display = "none";
+        }
+
+        function trackOutcomeEligible(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_eligible", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
+        }
+
+        function trackOutcomeNotEligible(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_not_eligible", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
+        }
+
+        function trackOutcomeNotFound(registrationId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/track_outcome_not_found", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log(response.message);
+                }
+            };
+            xhr.send(JSON.stringify({"registrationId": registrationId}));
+        }
+    </script>
+{% endblock %}
