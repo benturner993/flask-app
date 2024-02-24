@@ -232,3 +232,15 @@ Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:40:
 Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:41:34.868262
 Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:43:31.913878
 Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:45:56.879697
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:51:52.030924
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:53:14.853920
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:53:40.621952
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 15:59:31.869292
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 16:01:31.327565
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 16:02:27.883783
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 16:02:36.866286
+Outcome: not eligible, Registration ID 29, Username: test123, Time: 2024-02-24 16:03:18.009907
+Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 16:06:18.469300
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 16:07:42.088490
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 16:09:01.134132
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 16:10:02.472284

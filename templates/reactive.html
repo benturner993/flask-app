@@ -30,28 +30,42 @@
         <p>Annual Premium: <span id="annualPremium"></span></p>
     </div>
 
-    <!-- Track Outcomes Component -->
+    <style>
+      /* Apply box-sizing to ensure padding and borders are included in the total height and width */
+      #trackOutcomes select, #trackOutcomes input[type="text"] {
+        box-sizing: border-box;
+        height: 25px;
+        width: 150px;
+        /* Additional styles to ensure consistency */
+        border: 1px solid #ccc; /* Standardize border */
+        font-size: 14px; /* Adjust font size if necessary */
+        padding: 0 4px; /* Adjust padding inside the boxes */
+      }
+    </style>
+
     <div id="trackOutcomes" style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
-        <img src="{{ url_for('static', filename='bupa_track.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
-        <div style="margin-bottom: 55px;"></div>
-        <h3>Track Outcomes</h3>
-        <form id="outcomeTrackingForm">
-            <label for="outcome">Outcome:</label>
-            <select id="outcome" name="outcome" onchange="checkOutcome()">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="Maybe">Maybe</option>
-                <option value="Yes - With STM Override">Yes - With STM Override</option>
-                <option value="No - With STM Override">No - With STM Override</option>
-                <option value="Maybe - With STM Override">Maybe - With STM Override</option>
-            </select>
-            <div id="stmNameField" style="display: none;">
-                <label for="stmName">STM Name:</label>
-                <input type="text" id="stmName" name="stmName">
-            </div>
-            <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')">Track</button>
-        </form>
-        <div id="outcomeStatus"></div>
+      <img src="{{ url_for('static', filename='bupa_track.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+      <div style="margin-bottom: 55px;"></div>
+        <h3>Customer Outcome</h3>
+      <form id="outcomeTrackingForm">
+        <label for="outcome">Offer Outcome: </label>
+        <select id="outcome" name="outcome" onchange="checkOutcome()">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Maybe">Maybe</option>
+          <option value="Yes - With STM Override">Yes - With STM Override</option>
+          <option value="No - With STM Override">No - With STM Override</option>
+          <option value="Maybe - With STM Override">Maybe - With STM Override</option>
+        </select>
+        <div style="margin-top: 10px;"></div> <!-- Adjust spacing between elements -->
+        <div style="margin-bottom: 20px;"></div>
+          <div id="stmNameField" style="display: none;">
+          <label for="stmName">Manager Name:</label>
+          <input type="text" id="stmName" name="stmName">
+        </div>
+      </form>
+      <div id="outcomeStatus" style="margin-top: 25px;"></div>
+      <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')" style="position: absolute; bottom: 20px; right: 20px;">Track</button>
     </div>
 </div>
 
