@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 {% extends "base.html" %}
 
 {% block content %}
@@ -8,10 +7,9 @@
             <h1 style="margin-bottom: 10px;">Your hub for Proactive Retention</h1>
     </div>
 
- </div>
-    <div style="display: flex;">
+    <div style="display: flex; margin: 0 10px;"> <!-- Reduced side margins for overall flex container -->
         <!-- Dialling List -->
-        <div style="flex: 2; margin-right: 20px; margin-left: 20px;"> <!-- Add left margin -->
+        <div style="flex: 2; margin-right: 10px; background-color: #f1efeb; padding: 20px; border-radius: 5px;"> <!-- Adjusted margins and padding -->
             <h3 style="font-size: 16px;">Dialling List</h3>
             <div style="overflow-y: auto; max-height: 400px;">
                 <ul style="list-style-type: none; padding: 0;">
@@ -22,28 +20,29 @@
             </div>
         </div>
         <!-- Customer Details -->
-        <div style="flex: 4; padding-left: 20px;">
+        <div style="flex: 4; margin-right: 10px; background-color: #f1efeb; padding: 20px; border-radius: 5px;"> <!-- Adjusted margins and padding -->
             <h3 style="font-size: 16px;">Customer Details</h3>
             <div id="selectedCustomer">
                 <!-- Customer details will be displayed here -->
             </div>
         </div>
         <!-- Outcomes -->
-        <div style="flex: 4; padding-left: 20px;">
+        <div style="flex: 4; background-color: #f1efeb; padding: 20px; border-radius: 5px;"> <!-- Adjusted padding -->
             <h3 style="font-size: 16px;">Outcomes</h3>
-            <div id="acceptanceTracking" style="margin-top: 20px;"> <!-- Add margin-top -->
+            <div id="acceptanceTracking" style="margin-top: 20px;">
                 <!-- Acceptance tracking content will be displayed here -->
                 <div>
                     <h4 style="display: inline-block;">Did the customer accept?</h4>
-                    <select id="acceptance" name="acceptance" style="margin-left: 10px;"> <!-- Add margin-left -->
+                    <select id="acceptance" name="acceptance" style="margin-left: 10px;">
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
-                    <button type="button" onclick="saveCustomerAcceptance()" style="margin-left: 10px;">Save</button> <!-- Add margin-left -->
+                    <button type="button" onclick="saveCustomerAcceptance()" style="margin-left: 10px;">Save</button>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         function showCustomerDetails(name, email, phone, lapsePropensity, customerLifetimeValue, callAgent) {
             var customerDetailsDiv = document.getElementById("selectedCustomer");
