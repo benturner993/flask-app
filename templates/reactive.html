@@ -4,229 +4,242 @@
 
 <div style="margin-left: 20px; margin-right: 20px; margin-top: -20px;">
 
-    <div style="text-align: center; padding: 20px; background-image: url('static/online-Swimming-butterfly.png'); background-size: cover; background-position: center 60%; color: black; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
+    <div style="text-align: center; padding: 20px; background-image: url('static/online-Looking-out-to-sea.png'); background-size: cover; background-position: center 15%; color: #0d1846; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px;">
         <h1>Your Hub for Reactive Retention</h1>
     </div>
 
-<div id="searchSection" style="max-width: 1200px; margin: 0 auto; padding-top: 20px; font-family: 'Montserrat', sans-serif;">
-    <form id="searchForm" style="display: flex; align-items: center; gap: 10px;" onsubmit="searchCustomer(); return false;">
-        <input type="text" id="registrationId" name="registrationId" placeholder="Enter Registration ID" style="width: 500px; height: 34px;">
-        <button type="submit" style="width: 100px; height: 34px; font-weight: 500;">Search</button>
-    </form>
-    <div id="searchResult"></div>
-</div>
-
-<!-- Flex Container for the two components with separation -->
-<div style="display: flex; justify-content: space-between; gap: 20px; margin-top: 20px;">
-    <!-- Know Your Customer Component -->
-    <div id="knowYourCustomer" style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
-        <img src="{{ url_for('static', filename='ai.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
-        <div style="margin-bottom: 55px;"></div>
-        <h3>Know Your Customer</h3>
-        <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
-        <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
-        <p>Call Agent: <span id="callAgent"></span></p>
-        <p>Discount Eligibility: <span id="discountEligibility"></span></p>
-        <p>Annual Premium: <span id="annualPremium"></span></p>
+    <div id="searchSection"
+         style="max-width: 1200px; margin: 0 auto; padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+<!--        <div style="margin-bottom: 10px;">Enter a Registration ID...</div>-->
+        <form id="searchForm" style="display: flex; align-items: center; gap: 10px;"
+              onsubmit="searchCustomer(); return false;">
+            <input type="text" id="registrationId" name="registrationId" placeholder="Search for a Customer"
+                   style="width: 500px; height: 40px; border: none; border-bottom: 1px dotted #f1efeb; outline: none; font-size: 32px;">
+            <button type="submit" style="width: 100px; height: 34px; font-weight: 200;">Search</button>
+        </form>
+        <div id="searchResult"></div>
     </div>
 
-    <style>
-      /* Apply box-sizing to ensure padding and borders are included in the total height and width */
-      #trackOutcomes select, #trackOutcomes input[type="text"] {
-        box-sizing: border-box;
-        height: 25px;
-        width: 150px;
-        /* Additional styles to ensure consistency */
-        border: 1px solid #ccc; /* Standardize border */
-        font-size: 14px; /* Adjust font size if necessary */
-        padding: 0 4px; /* Adjust padding inside the boxes */
-      }
-    </style>
-
-    <div id="trackOutcomes" style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
-      <img src="{{ url_for('static', filename='bupa_track.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
-      <div style="margin-bottom: 55px;"></div>
-        <h3>Customer Outcome</h3>
-      <form id="outcomeTrackingForm">
-        <label for="outcome">Offer Outcome: </label>
-        <select id="outcome" name="outcome" onchange="checkOutcome()">
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Maybe">Maybe</option>
-          <option value="Yes - With STM Override">Yes - With STM Override</option>
-          <option value="No - With STM Override">No - With STM Override</option>
-          <option value="Maybe - With STM Override">Maybe - With STM Override</option>
-        </select>
-        <div style="margin-top: 10px;"></div> <!-- Adjust spacing between elements -->
-        <div style="margin-bottom: 20px;"></div>
-          <div id="stmNameField" style="display: none;">
-          <label for="stmName">Manager Name:</label>
-          <input type="text" id="stmName" name="stmName">
+    <!-- Flex Container for the two components with separation -->
+    <div style="display: flex; justify-content: space-between; gap: 20px; margin-top: 20px;">
+        <!-- Know Your Customer Component -->
+        <div id="knowYourCustomer"
+             style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
+            <img src="{{ url_for('static', filename='ai.png') }}" alt="AI"
+                 style="width: 50px; position: absolute; top: 10px; left: 10px;">
+            <div style="margin-bottom: 55px;"></div>
+            <h3>Know Your Customer</h3>
+            <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
+            <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
+            <p>Call Agent: <span id="callAgent"></span></p>
+            <p>Discount Eligibility: <span id="discountEligibility"></span></p>
+            <p>Annual Premium: <span id="annualPremium"></span></p>
         </div>
-      </form>
-      <div id="outcomeStatus" style="margin-top: 25px;"></div>
-      <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')" style="position: absolute; bottom: 20px; right: 20px;">Track</button>
-    </div>
-</div>
 
-<!-- Reset button placed below the flex container for the two components, initially hidden -->
-<div style="text-align: right; margin-top: 5px;">
-    <button type="button" onclick="window.location.reload();" style="display: none; width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;" id="resetButton">Reset</button>
-</div>
+        <style>
+            /* Apply box-sizing to ensure padding and borders are included in the total height and width */
+            #trackOutcomes select, #trackOutcomes input[type="text"] {
+              box-sizing: border-box;
+              height: 25px;
+              width: 150px;
+              /* Additional styles to ensure consistency */
+              border: 1px solid #ccc; /* Standardize border */
+              font-size: 14px; /* Adjust font size if necessary */
+              padding: 0 4px; /* Adjust padding inside the boxes */
+            }
+        </style>
+
+        <div id="trackOutcomes"
+             style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
+            <img src="{{ url_for('static', filename='bupa_track.png') }}" alt="AI"
+                 style="width: 50px; position: absolute; top: 10px; left: 10px;">
+            <div style="margin-bottom: 55px;"></div>
+            <h3>Customer Outcome</h3>
+            <form id="outcomeTrackingForm">
+                <label for="outcome">Offer Outcome: </label>
+                <select id="outcome" name="outcome" onchange="checkOutcome()">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Maybe">Maybe</option>
+                    <option value="Yes - With STM Override">Yes - With STM Override</option>
+                    <option value="No - With STM Override">No - With STM Override</option>
+                    <option value="Maybe - With STM Override">Maybe - With STM Override</option>
+                </select>
+                <div style="margin-top: 10px;"></div> <!-- Adjust spacing between elements -->
+                <div style="margin-bottom: 20px;"></div>
+                <div id="stmNameField" style="display: none;">
+                    <label for="stmName">Manager Name:</label>
+                    <input type="text" id="stmName" name="stmName">
+                </div>
+            </form>
+            <div id="outcomeStatus" style="margin-top: 25px;"></div>
+            <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')"
+                    style="position: absolute; bottom: 20px; right: 20px;">Track
+            </button>
+        </div>
+    </div>
+
+    <!-- Reset button placed below the flex container for the two components, initially hidden -->
+    <div style="text-align: right; margin-top: 5px;">
+        <button type="button" onclick="window.location.reload();"
+                style="display: none; width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;"
+                id="resetButton">Reset
+        </button>
+    </div>
 </div>
 
 <script>
 
-        function checkOutcome() {
-            var outcome = document.getElementById("outcome").value;
-            var stmNameField = document.getElementById("stmNameField");
+    function checkOutcome() {
+        var outcome = document.getElementById("outcome").value;
+        var stmNameField = document.getElementById("stmNameField");
 
-            // Check if the outcome includes 'STM'
-            if (outcome.includes('STM')) {
-                stmNameField.style.display = "block";
-            } else {
-                stmNameField.style.display = "none";
-            }
+        // Check if the outcome includes 'STM'
+        if (outcome.includes('STM')) {
+            stmNameField.style.display = "block";
+        } else {
+            stmNameField.style.display = "none";
         }
+    }
 
 function searchCustomer() {
-    var registrationId = document.getElementById("registrationId").value;
+var registrationId = document.getElementById("registrationId").value;
 
-    // Show the reset button when search is initiated
-    document.getElementById("resetButton").style.display = "inline-block";
+// Show the reset button when search is initiated
+document.getElementById("resetButton").style.display = "inline-block";
 
-    // Perform customer lookup by making an AJAX request to the server
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            var searchResultElement = document.getElementById("searchResult");
-            searchResultElement.style.marginTop = "20px"; // Adjust spacing if needed
-            if (xhr.status === 200) {
-                // Parse the customer data from the response
-                var customerData = JSON.parse(xhr.responseText);
-                if ("error" in customerData) {
-                    // If an error is in the customer data, it means the customer wasn't found
-                    searchResultElement.innerHTML = `<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px; width: 490px;'>` + customerData.error + `</div>`;
-                    // Track the outcome of not found
-                    trackOutcomeNotFound(registrationId); // Pass registrationId as an argument
-                } else {
-                    // Customer is found, hide the search section here
-                    document.getElementById("searchSection").style.display = "none";
-
-                    // Process and display the customer information
-                    var discountEligibility = customerData.Discount_Eligibility;
-                    var annualPremium = customerData.Annual_Premium;
-                    if (discountEligibility === 'eligible') {
-                        searchResultElement.innerHTML = `<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Eligible for a discount</div>`;
-                        // Track the outcome of being eligible
-                        trackOutcomeEligible(registrationId); // Pass registrationId as an argument
-                    } else {
-                        searchResultElement.innerHTML = `<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Not eligible for a discount</div>`;
-                        // Track the outcome of not eligible
-                        trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
-                    }
-                    // Display additional fields
-                    document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
-                    document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
-                    document.getElementById("callAgent").textContent = customerData.Call_Agent;
-                    document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
-                    document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
-
-                    // Show the Know Your Customer and Track Outcomes sections
-                    document.getElementById("knowYourCustomer").style.display = "block";
-                    document.getElementById("trackOutcomes").style.display = "block";
-                }
+// Perform customer lookup by making an AJAX request to the server
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "/search_customer?registrationId=" + registrationId, true);
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+        var searchResultElement = document.getElementById("searchResult");
+        searchResultElement.style.marginTop = "20px"; // Adjust spacing if needed
+        if (xhr.status === 200) {
+            // Parse the customer data from the response
+            var customerData = JSON.parse(xhr.responseText);
+            if ("error" in customerData) {
+                // If an error is in the customer data, it means the customer wasn't found
+                searchResultElement.innerHTML = `<div style='background-color: #f1efeb; padding: 10px; border-radius: 10px; width: 490px;'>` + customerData.error + `</div>`;
+                // Track the outcome of not found
+                trackOutcomeNotFound(registrationId); // Pass registrationId as an argument
             } else {
-                searchResultElement.textContent = "Error occurred while searching for customer";
+                // Customer is found, hide the search section here
+                document.getElementById("searchSection").style.display = "none";
+
+                // Process and display the customer information
+                var discountEligibility = customerData.Discount_Eligibility;
+                var annualPremium = customerData.Annual_Premium;
+                if (discountEligibility === 'eligible') {
+                    searchResultElement.innerHTML = `<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Eligible for a discount</div>`;
+                    // Track the outcome of being eligible
+                    trackOutcomeEligible(registrationId); // Pass registrationId as an argument
+                } else {
+                    searchResultElement.innerHTML = `<div style='background-color: #db3907; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Not eligible for a discount</div>`;
+                    // Track the outcome of not eligible
+                    trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
+                }
+                // Display additional fields
+                document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
+                document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
+                document.getElementById("callAgent").textContent = customerData.Call_Agent;
+                document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
+                document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
+
+                // Show the Know Your Customer and Track Outcomes sections
+                document.getElementById("knowYourCustomer").style.display = "block";
+                document.getElementById("trackOutcomes").style.display = "block";
             }
+        } else {
+            searchResultElement.textContent = "Error occurred while searching for customer";
         }
-    };
-    xhr.send();
+    }
+};
+xhr.send();
 }
 
-        function trackOutcomeEligible(registrationId) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/track_outcome_eligible", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    console.log(response.message);
+    function trackOutcomeEligible(registrationId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/track_outcome_eligible", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                console.log(response.message);
+            }
+        };
+        xhr.send(JSON.stringify({"registrationId": registrationId}));
+    }
+
+    function trackOutcomeNotFound(registrationId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/track_outcome_not_found", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                console.log(response.message);
+            }
+        };
+        xhr.send(JSON.stringify({"registrationId": registrationId}));
+    }
+
+    function trackOutcomeNotEligible(registrationId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/track_outcome_not_eligible", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                console.log(response.message);
+            }
+        };
+        xhr.send(JSON.stringify({"registrationId": registrationId}));
+    }
+
+    function trackOutcome(username, time) {
+        var registrationId = document.getElementById("registrationId").value;
+        var outcome = document.getElementById("outcome").value;
+        var stmName = document.getElementById("stmName").value; // Retrieve STM Name value
+        var outcomeStatusElement = document.getElementById("outcomeStatus");
+
+        // Fetching additional fields
+        var lapsePropensity = document.getElementById("lapsePropensity").textContent;
+        var customerLifetimeValue = document.getElementById("customerLifetimeValue").textContent;
+        var callAgent = document.getElementById("callAgent").textContent;
+        var discountEligibility = document.getElementById("discountEligibility").textContent;
+        var annualPremium = document.getElementById("annualPremium").textContent;
+
+        // AJAX request to track outcome
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/track_outcome?registrationId=" + registrationId, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if ("message" in response) {
+                    outcomeStatusElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>" + response.message + "</div>";
+                } else {
+                    outcomeStatusElement.textContent = "Error occurred while tracking outcome";
                 }
-            };
-            xhr.send(JSON.stringify({"registrationId": registrationId}));
-        }
 
-        function trackOutcomeNotFound(registrationId) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/track_outcome_not_found", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    console.log(response.message);
-                }
-            };
-            xhr.send(JSON.stringify({"registrationId": registrationId}));
-        }
-
-        function trackOutcomeNotEligible(registrationId) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/track_outcome_not_eligible", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    console.log(response.message);
-                }
-            };
-            xhr.send(JSON.stringify({"registrationId": registrationId}));
-        }
-
-        function trackOutcome(username, time) {
-            var registrationId = document.getElementById("registrationId").value;
-            var outcome = document.getElementById("outcome").value;
-            var stmName = document.getElementById("stmName").value; // Retrieve STM Name value
-            var outcomeStatusElement = document.getElementById("outcomeStatus");
-
-            // Fetching additional fields
-            var lapsePropensity = document.getElementById("lapsePropensity").textContent;
-            var customerLifetimeValue = document.getElementById("customerLifetimeValue").textContent;
-            var callAgent = document.getElementById("callAgent").textContent;
-            var discountEligibility = document.getElementById("discountEligibility").textContent;
-            var annualPremium = document.getElementById("annualPremium").textContent;
-
-            // AJAX request to track outcome
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/track_outcome?registrationId=" + registrationId, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if ("message" in response) {
-                        outcomeStatusElement.innerHTML = "<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px;'>" + response.message + "</div>";
-                    } else {
-                        outcomeStatusElement.textContent = "Error occurred while tracking outcome";
-                    }
-
-                    // Refresh the page after 1 second
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 1500);
-                }
-            };
-            xhr.send(JSON.stringify({
-                "username": username,
-                "time": time,
-                "outcome": outcome,
-                "stmName": stmName, // Send STM Name
-                "lapsePropensity": lapsePropensity, // Send Lapse Propensity
-                "customerLifetimeValue": customerLifetimeValue, // Send Customer Lifetime Value
-                "callAgent": callAgent, // Send Call Agent
-                "discountEligibility": discountEligibility, // Send Discount Eligibility
-                "annualPremium": annualPremium // Send Annual Premium
-            }));
-        }
-    </script>
+                // Refresh the page after 1 second
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1500);
+            }
+        };
+        xhr.send(JSON.stringify({
+            "username": username,
+            "time": time,
+            "outcome": outcome,
+            "stmName": stmName, // Send STM Name
+            "lapsePropensity": lapsePropensity, // Send Lapse Propensity
+            "customerLifetimeValue": customerLifetimeValue, // Send Customer Lifetime Value
+            "callAgent": callAgent, // Send Call Agent
+            "discountEligibility": discountEligibility, // Send Discount Eligibility
+            "annualPremium": annualPremium // Send Annual Premium
+        }));
+    }
+</script>
 {% endblock %}
