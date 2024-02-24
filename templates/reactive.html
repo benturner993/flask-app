@@ -8,7 +8,7 @@
         <h1>Your Hub for Reactive Retention</h1>
     </div>
 
-    <div id="searchSection" style="max-width: 800px; margin: 0 auto; padding-top: 20px; font-family: 'Montserrat', sans-serif;">
+    <div id="searchSection" style="max-width: 1200px; margin: 0 auto; padding-top: 20px; font-family: 'Montserrat', sans-serif;">
         <form id="searchForm" style="display: flex; align-items: center; gap: 10px;">
             <input type="text" id="registrationId" name="registrationId" placeholder="Enter Registration ID" style="width: 500px; height: 34px;">
             <button type="button" onclick="searchCustomer()" style="width: 100px; height: 34px; font-weight: 500;">Search</button>
@@ -16,44 +16,49 @@
         <div id="searchResult"></div>
     </div>
 
-    <!-- Flex Container for the two components with separation -->
-    <div style="display: flex; justify-content: space-between; gap: 20px; margin-top: 20px;">
-        <!-- Know Your Customer Component -->
-        <div id="knowYourCustomer" style="display: none; padding: 20px; background-color: #f1efeb; width: 48%;">
-            <h3>Know Your Customer</h3>
-            <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
-            <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
-            <p>Call Agent: <span id="callAgent"></span></p>
-            <p>Discount Eligibility: <span id="discountEligibility"></span></p>
-            <p>Annual Premium: <span id="annualPremium"></span></p>
-        </div>
-
-        <!-- Track Outcomes Component -->
-        <div id="trackOutcomes" style="display: none; padding: 20px; background-color: #f1efeb; width: 48%;">
-            <h3>Track Outcomes</h3>
-            <form id="outcomeTrackingForm">
-                <label for="outcome">Outcome:</label>
-                <select id="outcome" name="outcome" onchange="checkOutcome()">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    <option value="Maybe">Maybe</option>
-                    <option value="Yes - With STM Override">Yes - With STM Override</option>
-                    <option value="No - With STM Override">No - With STM Override</option>
-                    <option value="Maybe - With STM Override">Maybe - With STM Override</option>
-                </select>
-                <div id="stmNameField" style="display: none;">
-                    <label for="stmName">STM Name:</label>
-                    <input type="text" id="stmName" name="stmName">
-                </div>
-                <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')">Track</button>
-            </form>
-            <div id="outcomeStatus"></div>
-        </div>
+<!-- Flex Container for the two components with separation -->
+<div style="display: flex; justify-content: space-between; gap: 20px; margin-top: 20px;">
+    <!-- Know Your Customer Component -->
+    <div id="knowYourCustomer" style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
+        <img src="{{ url_for('static', filename='ai.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+        <div style="margin-bottom: 55px;"></div>
+        <h3>Know Your Customer</h3>
+        <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
+        <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
+        <p>Call Agent: <span id="callAgent"></span></p>
+        <p>Discount Eligibility: <span id="discountEligibility"></span></p>
+        <p>Annual Premium: <span id="annualPremium"></span></p>
     </div>
 
-    <!-- Position the reset button at the bottom right of the page -->
-    <button type="button" onclick="window.location.reload();" style="position: absolute; bottom: 20px; right: 20px; width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;" id="resetButton">Reset</button>
+    <!-- Track Outcomes Component -->
+    <div id="trackOutcomes" style="display: none; padding: 20px; background-color: #f1efeb; width: 500px; border-radius: 5px; position: relative;">
+        <img src="{{ url_for('static', filename='bupa_track.png') }}" alt="AI" style="width: 50px; position: absolute; top: 10px; left: 10px;">
+        <div style="margin-bottom: 55px;"></div>
+        <h3>Track Outcomes</h3>
+        <form id="outcomeTrackingForm">
+            <label for="outcome">Outcome:</label>
+            <select id="outcome" name="outcome" onchange="checkOutcome()">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Maybe">Maybe</option>
+                <option value="Yes - With STM Override">Yes - With STM Override</option>
+                <option value="No - With STM Override">No - With STM Override</option>
+                <option value="Maybe - With STM Override">Maybe - With STM Override</option>
+            </select>
+            <div id="stmNameField" style="display: none;">
+                <label for="stmName">STM Name:</label>
+                <input type="text" id="stmName" name="stmName">
+            </div>
+            <button type="button" onclick="trackOutcome('{{ current_user.username }}', '{{ current_time }}')">Track</button>
+        </form>
+        <div id="outcomeStatus"></div>
+    </div>
+</div>
 
+<!-- Reset button placed below the flex container for the two components, initially hidden -->
+<div style="text-align: right; margin-top: 5px;">
+    <button type="button" onclick="window.location.reload();" style="display: none; width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;" id="resetButton">Reset</button>
+</div>
 </div>
 
 <script>
