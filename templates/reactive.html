@@ -10,12 +10,13 @@
 
     <div id="searchSection"
          style="max-width: 1200px; margin: 0 auto; padding-top: 20px; font-family: 'Montserrat', sans-serif;">
-<!--        <div style="margin-bottom: 10px;">Enter a Registration ID...</div>-->
+        <!--        <div style="margin-bottom: 10px;">Enter a Registration ID...</div>-->
         <form id="searchForm" style="display: flex; align-items: center; gap: 10px;"
               onsubmit="searchCustomer(); return false;">
-            <input type="text" id="registrationId" name="registrationId" placeholder="Search for a Customer"
+            <input type="text" id="registrationId" name="registrationId" placeholder="Search Customers"
                    style="width: 500px; height: 40px; border: none; border-bottom: 1px dotted #f1efeb; outline: none; font-size: 28px;">
-<button type="submit" style="width: 50px; height: 34px; font-weight: 100; background: url('static/search.png') no-repeat center center, #0079c8; background-size: contain;"></button>
+            <button type="submit"
+                    style="width: 50px; height: 34px; font-weight: 100; background: url('static/search.png') no-repeat center center, #0079c8; background-size: contain;"></button>
         </form>
         <div id="searchResult"></div>
     </div>
@@ -79,13 +80,15 @@
         </div>
     </div>
 
-    <!-- Reset button placed below the flex container for the two components, initially hidden -->
-    <div style="text-align: right; margin-top: 5px;">
-        <button type="button" onclick="window.location.reload();"
-                style="display: none; width: 100px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;"
-                id="resetButton">Reset
-        </button>
-    </div>
+<!-- Reset button placed below the flex container for the two components, initially hidden -->
+<div style="text-align: right; margin-top: 5px;">
+    <button type="button" onclick="window.location.reload();"
+            style="display: none; width: 50px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;
+                   border: none; padding: 0; position: relative; overflow: hidden;"
+            id="resetButton">
+        <img src="static/reset.png" alt="Reset" style="width: 50%; height: 70%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    </button>
+</div>
 </div>
 
 <script>

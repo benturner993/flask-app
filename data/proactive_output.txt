@@ -5,3 +5,7 @@ Customer: James Anderson, Acceptance: yes, Username: username, Time: 2024-02-09 
 Customer: David Wilson, Acceptance: yes, Username: username, Time: 2024-02-12 18:22:48
 Customer: David Wilson, Acceptance: yes, Username: username, Time: 2024-02-12 18:22:48
 Customer: David Wilson, Acceptance: yes, Username: username, Time: 2024-02-13 14:21:16
+Customer: Emily Davis, Acceptance: no, Username: test123, Time: 2024-02-24 21:53:16
+Customer: Emily Davis, Acceptance: no, Username: test123, Time: 2024-02-24 21:53:18
+Customer: Emily Davis, Acceptance: no, Username: test123, Time: 2024-02-24 21:53:18
+Customer: Emily Davis, Acceptance: no, Username: test123, Time: 2024-02-24 21:53:18
