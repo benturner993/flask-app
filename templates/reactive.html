@@ -153,11 +153,12 @@ xhr.onreadystatechange = function () {
                     knowYourCustomerDiv.style.border = "2px solid #b72900";
                 }
 
-                // Conditionally display the Track Outcomes section based on discount eligibility
+                // Process and display the customer information
+                var trackOutcomesDiv = document.getElementById("trackOutcomes");
                 if (discountEligibility === 'eligible') {
-                    document.getElementById("trackOutcomes").style.display = "block"; // Show if eligible
+                    trackOutcomesDiv.style.border = "2px solid #1b883c";
                 } else {
-                    document.getElementById("trackOutcomes").style.display = "none"; // Hide if not eligible
+                    trackOutcomesDiv.style.border = "2px solid #b72900";
                 }
 
                 // Display additional fields
