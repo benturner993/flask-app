@@ -134,6 +134,7 @@ xhr.onreadystatechange = function () {
                 // Process and display the customer information
                 var discountEligibility = customerData.Discount_Eligibility;
                 var annualPremium = customerData.Annual_Premium;
+
                 if (discountEligibility === 'eligible') {
                     searchResultElement.innerHTML = `<div style='background-color: #1b883c; color: white; padding: 10px; border-radius: 10px; width: 490px;'>Eligible for a discount</div>`;
                     // Track the outcome of being eligible
@@ -143,6 +144,22 @@ xhr.onreadystatechange = function () {
                     // Track the outcome of not eligible
                     trackOutcomeNotEligible(registrationId); // Pass registrationId as an argument
                 }
+
+                // Process and display the customer information
+                var knowYourCustomerDiv = document.getElementById("knowYourCustomer");
+                if (discountEligibility === 'eligible') {
+                    knowYourCustomerDiv.style.border = "2px solid #1b883c";
+                } else {
+                    knowYourCustomerDiv.style.border = "2px solid #b72900";
+                }
+
+                // Conditionally display the Track Outcomes section based on discount eligibility
+                if (discountEligibility === 'eligible') {
+                    document.getElementById("trackOutcomes").style.display = "block"; // Show if eligible
+                } else {
+                    document.getElementById("trackOutcomes").style.display = "none"; // Hide if not eligible
+                }
+
                 // Display additional fields
                 document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
                 document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
@@ -253,7 +270,7 @@ xhr.send();
             "lapsePropensity": lapsePropensity,
             "customerLifetimeValue": customerLifetimeValue,
 <!--            "callAgent": callAgent,-->
-<!--            "discountEligibility": discountEligibility,
+            "discountEligibility": discountEligibility,
             "annualPremium": annualPremium,
             "customerName": customerName,
             "customerAge": customerAge,

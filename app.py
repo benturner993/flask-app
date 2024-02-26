@@ -195,11 +195,11 @@ def track_outcome():
     if customer_lifetime_value:
         outcome_message += f", Customer Lifetime Value: {customer_lifetime_value}"
     if discount_eligibility:
-        outcome_message += f", Discount Eligibility: {discount_eligibility}"
+        outcome_message += f", Discount_Eligibility: {discount_eligibility}"
     if annual_premium:
         outcome_message += f", Annual Premium: {annual_premium}"
-    if stm_name is not None:  # Add STM Name to the outcome message if it is not None
-        outcome_message += f", STM Name: {stm_name}"
+    if stm_name is not None:
+        outcome_message += f", STM_Name: {stm_name}"
     if customer_name:
         outcome_message += f", Name: {customer_name}"
     if customer_age:
