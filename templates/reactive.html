@@ -35,9 +35,7 @@
             <p>Family Status: <span id="customerFamily" style="font-weight:bold;"></span></p>
             <p>Lapse Propensity: <span id="lapsePropensity" style="font-weight:bold;"></span></p>
             <p>1MF: <span id="customer1MF" style="font-weight:bold;"></span>&emsp;2MF: <span id="customer2MF" style="font-weight:bold;"></span>&emsp;3MF: <span id="customer3MF" style="font-weight:bold;"></span></p>
-<!--            <p>Call Agent: <span id="callAgent"></span></p>-->
-<!--            <p>Discount Eligibility: <span id="discountEligibility"></span></p>-->
-
+            <p style="display:none;">Discount Eligibility: <span id="discountEligibility"></span></p>
         </div>
 
         <style>
@@ -148,8 +146,7 @@ xhr.onreadystatechange = function () {
                 // Display additional fields
                 document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
                 document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
-<!--                document.getElementById("callAgent").textContent = customerData.Call_Agent;-->
-<!--                document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;-->
+                document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
                 document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
                 document.getElementById("customerName").textContent = customerData.Name;
                 document.getElementById("customerAge").textContent = customerData.Age;
@@ -219,9 +216,15 @@ xhr.send();
         // Fetching additional fields
         var lapsePropensity = document.getElementById("lapsePropensity").textContent;
         var customerLifetimeValue = document.getElementById("customerLifetimeValue").textContent;
-        var callAgent = document.getElementById("callAgent").textContent;
         var discountEligibility = document.getElementById("discountEligibility").textContent;
         var annualPremium = document.getElementById("annualPremium").textContent;
+        var customerName = document.getElementById("customerName").textContent;
+        var customerAge = document.getElementById("customerAge").textContent;
+        var customerTenure = document.getElementById("customerTenure").textContent;
+        var customerFamily = document.getElementById("customerFamily").textContent;
+        var customer1MF = document.getElementById("customer1MF").textContent;
+        var customer2MF = document.getElementById("customer2MF").textContent;
+        var customer3MF = document.getElementById("customer3MF").textContent;
 
         // AJAX request to track outcome
         var xhr = new XMLHttpRequest();
@@ -246,12 +249,19 @@ xhr.send();
             "username": username,
             "time": time,
             "outcome": outcome,
-            "stmName": stmName, // Send STM Name
-            "lapsePropensity": lapsePropensity, // Send Lapse Propensity
-            "customerLifetimeValue": customerLifetimeValue, // Send Customer Lifetime Value
-            "callAgent": callAgent, // Send Call Agent
-            "discountEligibility": discountEligibility, // Send Discount Eligibility
-            "annualPremium": annualPremium // Send Annual Premium
+            "stmName": stmName,
+            "lapsePropensity": lapsePropensity,
+            "customerLifetimeValue": customerLifetimeValue,
+<!--            "callAgent": callAgent,-->
+<!--            "discountEligibility": discountEligibility,
+            "annualPremium": annualPremium,
+            "customerName": customerName,
+            "customerAge": customerAge,
+            "customerTenure": customerTenure,
+            "customerFamily": customerFamily,
+            "customer1MF": customer1MF,
+            "customer2MF": customer2MF,
+            "customer3MF": customer3MF
         }));
     }
 </script>

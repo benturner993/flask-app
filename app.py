@@ -177,10 +177,16 @@ def track_outcome():
     # Fetching additional fields from the request data
     lapse_propensity = data.get('lapsePropensity')
     customer_lifetime_value = data.get('customerLifetimeValue')
-    call_agent = data.get('callAgent')
     discount_eligibility = data.get('discountEligibility')
     annual_premium = data.get('annualPremium')
-    stm_name = data.get('stmName')  # Fetching the STM Name from the request data
+    stm_name = data.get('stmName')
+    customer_name = data.get('customerName')
+    customer_age = data.get('customerAge')
+    customer_tenure = data.get('customerTenure')
+    customer_family = data.get('customer_family')
+    customer_1mf = data.get('customer1MF')
+    customer_2mf = data.get('customer2MF')
+    customer_3mf = data.get('customer3MF')
 
     # Constructing the outcome tracking message
     outcome_message = f"Registration ID: {registration_id}, Outcome: {outcome}, Username: {username}, Time: {time}"
@@ -188,14 +194,26 @@ def track_outcome():
         outcome_message += f", Lapse Propensity: {lapse_propensity}"
     if customer_lifetime_value:
         outcome_message += f", Customer Lifetime Value: {customer_lifetime_value}"
-    if call_agent:
-        outcome_message += f", Call Agent: {call_agent}"
     if discount_eligibility:
         outcome_message += f", Discount Eligibility: {discount_eligibility}"
     if annual_premium:
         outcome_message += f", Annual Premium: {annual_premium}"
     if stm_name is not None:  # Add STM Name to the outcome message if it is not None
         outcome_message += f", STM Name: {stm_name}"
+    if customer_name:
+        outcome_message += f", Name: {customer_name}"
+    if customer_age:
+        outcome_message += f", Age: {customer_name}"
+    if customer_tenure:
+        outcome_message += f", Tenure: {customer_tenure}"
+    if customer_family:
+        outcome_message += f", Family_Status: {customer_family}"
+    if customer_1mf:
+        outcome_message += f", Propensity_1_Month: {customer_1mf}"
+    if customer_2mf:
+        outcome_message += f", Propensity_2_Month: {customer_2mf}"
+    if customer_3mf:
+        outcome_message += f", Propensity_3_Month: {customer_3mf}"
 
     # Writing the outcome message to the file
     with open('data/reactive_intervention_outcome.txt', 'a') as file:
