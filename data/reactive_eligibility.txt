@@ -292,3 +292,7 @@ Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 21:50:
 Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 21:50:28.321969
 Outcome: eligible, Registration ID 1, Username: test123, Time: 2024-02-24 21:55:50.769791
 Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-24 21:58:07.923342
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-26 13:31:15.132187
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-26 17:45:50.938131
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-26 17:55:06.354775
+Outcome: eligible, Registration ID 2, Username: test123, Time: 2024-02-26 17:57:41.586170
