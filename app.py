@@ -158,9 +158,9 @@ def search_customer():
                     "Age": row['Age'],
                     "Tenure": row['Tenure'],
                     "Family_Status": row['Family_Status'],
-                    "1_Month_Free_Propensity": row['1_Month_Free_Propensity'],
-                    "2_Month_Free_Propensity": row['2_Month_Free_Propensity'],
-                    "3_Month_Free_Propensity": row['3_Month_Free_Propensity'],
+                    "Month_1_Free_Propensity": row['Month_1_Free_Propensity'],
+                    "Month_2_Free_Propensity": row['Month_2_Free_Propensity'],
+                    "Month_3_Free_Propensity": row['Month_3_Free_Propensity'],
                 })
 
     return jsonify({"error": "Customer not found"})

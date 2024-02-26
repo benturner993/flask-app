@@ -32,10 +32,9 @@
             <h3>Know Your Customer</h3>
             <p>Name: <span id="customerName" style="font-weight:bold;"></span>&emsp;Age: <span id="customerAge" style="font-weight:bold;"></span>&emsp; Tenure: <span id="customerTenure" style="font-weight:bold;"></span></p>
             <p>Premium: <b>£</b><span id="annualPremium" style="font-weight:bold;"></span>&emsp; LTV: <b>£</b><span id="customerLifetimeValue" style="font-weight:bold;"></span></p>
+            <p>Family Status: <span id="customerFamily" style="font-weight:bold;"></span></p>
             <p>Lapse Propensity: <span id="lapsePropensity" style="font-weight:bold;"></span></p>
-<!--            <p>1MF Acceptance: <span id="customerMF" style="font-weight:bold;"></span></p>-->
-<!--            <p>2MF Acceptance: <span id="customer2MF" style="font-weight:bold;"></span></p>-->
-<!--            <p>3MF Acceptance: <span id="customer3MF" style="font-weight:bold;"></span></p>-->
+            <p>1MF: <span id="customer1MF" style="font-weight:bold;"></span>&emsp;2MF: <span id="customer2MF" style="font-weight:bold;"></span>&emsp;3MF: <span id="customer3MF" style="font-weight:bold;"></span></p>
 <!--            <p>Call Agent: <span id="callAgent"></span></p>-->
 <!--            <p>Discount Eligibility: <span id="discountEligibility"></span></p>-->
 
@@ -155,9 +154,10 @@ xhr.onreadystatechange = function () {
                 document.getElementById("customerName").textContent = customerData.Name;
                 document.getElementById("customerAge").textContent = customerData.Age;
                 document.getElementById("customerTenure").textContent = customerData.Tenure;
-<!--                document.getElementById("customerMF").textContent = customerData.1_Month_Free_Propensity;-->
-<!--                document.getElementById("customer2MF").textContent = customerData.2_Month_Free_Propensity;-->
-<!--                document.getElementById("customer3MF").textContent = customerData.3_Month_Free_Propensity;-->
+                document.getElementById("customerFamily").textContent = customerData.Family_Status;
+                document.getElementById("customer1MF").textContent = customerData.Month_1_Free_Propensity;
+                document.getElementById("customer2MF").textContent = customerData.Month_2_Free_Propensity;
+                document.getElementById("customer3MF").textContent = customerData.Month_3_Free_Propensity;
 
                 // Show the Know Your Customer and Track Outcomes sections
                 document.getElementById("knowYourCustomer").style.display = "block";
