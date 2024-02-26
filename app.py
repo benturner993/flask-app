@@ -130,7 +130,7 @@ def save_acceptance():
 @app.route('/reactive')
 @login_required
 def reactive():
-    customers = read_customers_from_csv('data/reactive_input.csv')
+    customers = read_customers_from_csv('data/reactive_input_2.csv')
     return render_template('reactive.html', customers=customers)
 
 @app.route('/search_customer')
@@ -141,7 +141,7 @@ def search_customer():
         return jsonify({"error": "Registration ID not provided"})
 
     # Simulate customer lookup in reactive_input.csv
-    with open('data/reactive_input.csv', 'r') as file:
+    with open('data/reactive_input_2.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if row['CustomerID'] == registration_id:
@@ -153,8 +153,14 @@ def search_customer():
                     "Lapse_Propensity": row['Lapse_Propensity'],
                     "Customer_Lifetime_Value": row['Customer_Lifetime_Value'],
                     "Call_Agent": row['Call_Agent'],
-                    "Discount_Eligibility": row['Discount_Eligibility'],  # Assuming this field exists in the CSV
-                    "Annual_Premium": row['Annual_Premium']  # Assuming this field exists in the CSV
+                    "Discount_Eligibility": row['Discount_Eligibility'],
+                    "Annual_Premium": row['Annual_Premium'],
+                    "Age": row['Age'],
+                    "Tenure": row['Tenure'],
+                    "Family_Status": row['Family_Status'],
+                    "1_Month_Free_Propensity": row['1_Month_Free_Propensity'],
+                    "2_Month_Free_Propensity": row['2_Month_Free_Propensity'],
+                    "3_Month_Free_Propensity": row['3_Month_Free_Propensity'],
                 })
 
     return jsonify({"error": "Customer not found"})

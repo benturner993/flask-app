@@ -30,11 +30,15 @@
                  style="width: 50px; position: absolute; top: 10px; left: 10px;">
             <div style="margin-bottom: 55px;"></div>
             <h3>Know Your Customer</h3>
-            <p>Lapse Propensity: <span id="lapsePropensity"></span></p>
-            <p>Customer Lifetime Value: <span id="customerLifetimeValue"></span></p>
-            <p>Call Agent: <span id="callAgent"></span></p>
-            <p>Discount Eligibility: <span id="discountEligibility"></span></p>
-            <p>Annual Premium: <span id="annualPremium"></span></p>
+            <p>Name: <span id="customerName" style="font-weight:bold;"></span>&emsp;Age: <span id="customerAge" style="font-weight:bold;"></span>&emsp; Tenure: <span id="customerTenure" style="font-weight:bold;"></span></p>
+            <p>Premium: <b>£</b><span id="annualPremium" style="font-weight:bold;"></span>&emsp; LTV: <b>£</b><span id="customerLifetimeValue" style="font-weight:bold;"></span></p>
+            <p>Lapse Propensity: <span id="lapsePropensity" style="font-weight:bold;"></span></p>
+<!--            <p>1MF Acceptance: <span id="customerMF" style="font-weight:bold;"></span></p>-->
+<!--            <p>2MF Acceptance: <span id="customer2MF" style="font-weight:bold;"></span></p>-->
+<!--            <p>3MF Acceptance: <span id="customer3MF" style="font-weight:bold;"></span></p>-->
+<!--            <p>Call Agent: <span id="callAgent"></span></p>-->
+<!--            <p>Discount Eligibility: <span id="discountEligibility"></span></p>-->
+
         </div>
 
         <style>
@@ -145,9 +149,15 @@ xhr.onreadystatechange = function () {
                 // Display additional fields
                 document.getElementById("lapsePropensity").textContent = customerData.Lapse_Propensity;
                 document.getElementById("customerLifetimeValue").textContent = customerData.Customer_Lifetime_Value;
-                document.getElementById("callAgent").textContent = customerData.Call_Agent;
-                document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;
+<!--                document.getElementById("callAgent").textContent = customerData.Call_Agent;-->
+<!--                document.getElementById("discountEligibility").textContent = customerData.Discount_Eligibility;-->
                 document.getElementById("annualPremium").textContent = customerData.Annual_Premium;
+                document.getElementById("customerName").textContent = customerData.Name;
+                document.getElementById("customerAge").textContent = customerData.Age;
+                document.getElementById("customerTenure").textContent = customerData.Tenure;
+<!--                document.getElementById("customerMF").textContent = customerData.1_Month_Free_Propensity;-->
+<!--                document.getElementById("customer2MF").textContent = customerData.2_Month_Free_Propensity;-->
+<!--                document.getElementById("customer3MF").textContent = customerData.3_Month_Free_Propensity;-->
 
                 // Show the Know Your Customer and Track Outcomes sections
                 document.getElementById("knowYourCustomer").style.display = "block";
