@@ -3,24 +3,23 @@
 {% block content %}
 <div style="margin-left: 20px; margin-right: 20px; margin-top: -20px;">
 
-    <div style="text-align: center; padding: 20px; background-image: url('static/online-A-long-journey.png'); background-size: cover; background-position: center 50%; color: #0d1846; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 215px; margin-bottom: 20px; position: relative;"> <!-- Increased min-height by 15px -->
+    <div style="text-align: center; padding: 20px; background-image: url('static/online-A-long-journey.png'); background-size: cover; background-position: center 50%; color: #0d1846; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; min-height: 200px; margin-bottom: 20px; position: relative;"> <!-- Increased min-height by 15px -->
 <!--        <img src="{{ url_for('static', filename='ai.png') }}" alt="AI" style="width: 50px; position: absolute; top: 30px; left: 30px; margin-bottom: 50px;"> &lt;!&ndash; Adjusted top and left properties &ndash;&gt;-->
-        <h1 style="margin-bottom: 10px;">Your hub for Proactive Retention</h1>
+        <h1 style="margin-bottom: 10px;">Your Hub for Proactive Retention</h1>
     </div>
 
     <div style="display: flex; margin: 0 10px; position: relative;"> <!-- Reduced side margins for overall flex container -->
-        <!-- Dialling List -->
-        <div style="flex: 4; margin-right: 10px; background-color: #f1efeb; border-radius: 5px; height: 330px; overflow: hidden; position: relative;"> <!-- Increased height by another 15px -->
-<!--            <img src="{{ url_for('static', filename='ai.png') }}" alt="AI" style="width: 50px; position: absolute; top: 30px; left: 30px; margin-bottom: 50px;"> &lt;!&ndash; Adjusted top and left properties &ndash;&gt;-->
-            <h3 style="font-size: 16px; padding: 20px; margin: 0;">Dialling List</h3> <!-- Adjusted padding and margin -->
-            <div style="overflow-y: auto; max-height: calc(100% - 60px); padding: 0 20px;"> <!-- Adjusted padding and max-height -->
-                <ul style="list-style-type: none; padding: 0;">
-                    {% for customer in customers %}
-                        <li><a href="#" onclick="showCustomerDetails('{{ customer.Name }}', '{{ customer.Email }}', '{{ customer.Phone }}', '{{ customer.Lapse_Propensity }}', '{{ customer.Customer_Lifetime_Value }}', '{{ customer.Call_Agent }}')" style="color: #0079c8;">{{ customer.Name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+    <!-- Dialling List -->
+    <div style="flex: 4; margin-right: 10px; background-color: #f1efeb; border-radius: 5px; height: 330px; overflow: hidden; position: relative;"> <!-- Increased height by another 15px -->
+        <h3 style="font-size: 16px; padding: 20px; margin: 0;">Dialling List</h3> <!-- Adjusted padding and margin -->
+        <div style="overflow-y: auto; max-height: calc(100% - 60px); padding: 0 20px; margin-bottom: 20px;"> <!-- Adjusted margin-bottom -->
+            <ul style="list-style-type: none; padding: 0;">
+                {% for customer in customers %}
+                    <li><a href="#" onclick="showCustomerDetails('{{ customer.Name }}', '{{ customer.Email }}', '{{ customer.Phone }}', '{{ customer.Lapse_Propensity }}', '{{ customer.Customer_Lifetime_Value }}', '{{ customer.Call_Agent }}')" style="color: #0079c8;">{{ customer.Name }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
+    </div>
         <!-- Customer Details -->
         <div style="flex: 5; margin-right: 10px; background-color: #f1efeb; border-radius: 5px; height: 330px; width: 400px; overflow-y: auto; position: relative;"> <!-- Increased height by another 15px -->
 <!--            <img src="{{ url_for('static', filename='ai.png') }}" alt="AI" style="width: 50px; position: absolute; top: 30px; left: 30px;"> &lt;!&ndash; Adjusted top and left properties &ndash;&gt;-->
