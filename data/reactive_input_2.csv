@@ -1,51 +1,51 @@
 Name,Email,Phone,Lapse_Propensity,Customer_Lifetime_Value,Call_Agent,Discount_Eligibility,Age,Tenure,Family_Status,Annual_Premium,Month_1_Free_Propensity,Month_2_Free_Propensity,Month_3_Free_Propensity,CustomerID
-Paula Hahn,jsanders@example.org,001-401-392-7411x2188,0.11,37117.94,Paula Hahn,eligible,34,2,Family with Multiple Children,8704.17,0.66,0.9,1.0,1
-Jason Jones,cwhitney@example.com,938.256.5046x2756,0.47,27223.14,Jason Jones,eligible,57,9,Family with Multiple Children,8690.02,0.29,0.56,0.22,2
-Krista Jones,lisa97@example.com,+1-266-362-4015x73477,0.1,46975.11,Krista Jones,eligible,70,1,Family with Multiple Children,7421.16,0.73,0.82,0.72,3
-Tracy Barry,kelly08@example.net,001-971-886-7063x6557,0.71,16132.16,Tracy Barry,not eligible,22,19,Single,5502.05,0.01,0.78,0.06,4
-Matthew Mcclain,ccameron@example.com,978.328.8494x17495,0.27,37685.61,Matthew Mcclain,not eligible,41,19,Family with Multiple Children,6559.11,0.37,0.25,0.87,5
-Patrick Miller,tcarney@example.org,919-879-7230,0.78,24754.87,Patrick Miller,eligible,30,11,Single parent family,9428.84,0.65,0.46,0.97,6
-Michael Molina,christophersalazar@example.org,608-675-2518x17275,0.54,39892.4,Michael Molina,eligible,21,3,Single parent family,5324.43,0.64,0.19,0.63,7
-Matthew Jordan,donald17@example.org,6712419124,0.8,13735.76,Matthew Jordan,eligible,44,15,Family with Multiple Children,7267.99,0.11,0.94,0.59,8
-Crystal Thomas,karengreen@example.org,1770310649,0.84,20095.46,Crystal Thomas,not eligible,25,18,Single parent family,1289.63,0.96,0.97,0.08,9
-Stephanie Ray,kelli76@example.net,(057)291-8863,0.15,41877.6,Stephanie Ray,not eligible,48,17,Single,8855.17,0.72,0.72,0.41,10
-Eric Anderson,john77@example.net,001-367-900-0608,0.53,21769.81,Eric Anderson,not eligible,67,11,Single parent family,9520.65,0.4,0.2,0.59,11
-Ian Gallegos,jody53@example.org,001-751-621-8781x1609,0.02,8752.96,Ian Gallegos,not eligible,51,18,Family,8103.85,0.01,0.74,0.46,12
-Eric Cameron,ellisjoshua@example.com,139-082-8180,0.91,41493.17,Eric Cameron,eligible,39,17,Single,7000.41,0.5,0.48,0.71,13
-Peter Hughes,murphydiane@example.net,001-947-569-0631x3956,0.62,43038.13,Peter Hughes,not eligible,24,18,Single parent family,8152.06,0.63,0.68,0.25,14
-Dominic Robinson,dhamilton@example.net,+1-734-257-0067,0.98,13875.74,Dominic Robinson,not eligible,35,11,Family,8777.64,0.06,0.58,0.66,15
-Laurie Waters,richardsantos@example.com,001-277-755-2060x198,0.95,46125.18,Laurie Waters,eligible,65,17,Family with Multiple Children,6264.02,0.01,0.68,0.95,16
-Kristopher Graham,mcdanieljames@example.org,5130144641,0.66,33990.98,Kristopher Graham,eligible,63,8,Single,8044.71,0.84,0.0,0.77,17
-Kevin Salinas,barrettmegan@example.com,281.459.7319x1052,0.77,2659.35,Kevin Salinas,not eligible,30,4,Family,5394.26,0.32,0.58,0.19,18
-Holly Patel,pmorales@example.com,(565)068-4989x18647,0.59,38407.74,Holly Patel,eligible,21,4,Single parent family,6879.32,0.69,0.93,0.42,19
-Alicia Rich,yangangela@example.com,608.618.1083x771,0.38,46735.32,Alicia Rich,not eligible,56,7,Single parent family,7582.68,0.73,0.88,0.17,20
-Dr. Beth Woods,jacksonmichael@example.org,(787)855-9715x1633,0.99,7919.69,Dr. Beth Woods,not eligible,43,10,Family with Multiple Children,4784.51,0.13,0.14,0.54,21
-James Wells,stephanie85@example.net,375-152-7440,0.49,17715.21,James Wells,not eligible,46,1,Family with Multiple Children,3061.24,0.93,0.29,0.98,22
-Corey Smith,tammy91@example.org,383-718-7737,0.94,27736.84,Corey Smith,eligible,26,5,Couple,7484.67,0.08,0.76,0.36,23
-Duane Robbins,qlandry@example.net,306.031.3422,0.13,20651.81,Duane Robbins,eligible,49,7,Single parent family,4048.27,0.65,0.57,0.41,24
-William Davis,snowsandra@example.net,(175)730-6118,0.18,-4279.51,William Davis,eligible,26,13,Family with Multiple Children,1136.68,0.37,0.17,0.66,25
-Stephen Harrison,ujimenez@example.org,+1-052-696-4485x7802,0.49,3140.85,Stephen Harrison,not eligible,34,19,Couple,2591.47,0.43,0.8,0.25,26
-Anthony Wright,campbellalexa@example.org,001-531-281-7097,0.08,23488.57,Anthony Wright,not eligible,45,20,Couple,6981.79,0.28,0.48,0.75,27
-Jean Gray,saramurphy@example.org,001-731-058-8685x24495,0.75,2666.24,Jean Gray,not eligible,58,6,Family,5235.46,0.92,0.89,0.52,28
-Heidi Olson,amiller@example.com,+1-802-539-4173x0069,0.56,14564.78,Heidi Olson,not eligible,47,1,Family with Multiple Children,8757.25,0.48,0.77,0.83,29
-Ashley Henson,linda56@example.net,372-493-5772x30054,0.16,32367.2,Ashley Henson,not eligible,69,13,Family with Multiple Children,1103.7,0.24,0.77,0.32,30
-Donald Boyd,zmacias@example.net,100.454.0640,0.24,26774.53,Donald Boyd,not eligible,34,3,Family with Multiple Children,6185.2,0.54,0.05,0.06,31
-Vanessa Sanchez,martinvelasquez@example.org,+1-598-751-9572x686,0.93,49148.6,Vanessa Sanchez,not eligible,47,11,Couple,1592.8,0.69,0.04,0.79,32
-Jennifer Levy,marcuswoods@example.org,454-095-1487,0.68,34397.27,Jennifer Levy,eligible,57,8,Couple,8843.88,0.24,0.13,0.36,33
-Mrs. Jessica Cooley,miguelball@example.net,326-271-8470x686,0.34,47801.52,Mrs. Jessica Cooley,eligible,47,7,Family with Multiple Children,2687.4,0.57,0.6,0.32,34
-Emily Beard,gregoryrichards@example.net,(231)068-3298x67983,0.03,46950.69,Emily Beard,eligible,65,14,Couple,5156.95,0.91,0.46,0.34,35
-Keith Bishop,melindamendez@example.org,354-506-9744x3800,0.43,14901.85,Keith Bishop,not eligible,57,11,Family with Multiple Children,6051.1,0.78,0.21,0.31,36
-Samantha Johnson,davisstephanie@example.net,165-632-1326,0.3,13200.45,Samantha Johnson,not eligible,33,6,Family with Multiple Children,1588.95,0.2,0.99,0.58,37
-Lawrence Cooper,esantos@example.com,+1-569-506-0503x5767,0.31,29753.37,Lawrence Cooper,eligible,54,6,Single parent family,6518.52,0.26,0.59,0.46,38
-Michael Wang,davisgary@example.net,(711)533-6915x015,0.38,18441.37,Michael Wang,eligible,69,13,Single,6659.47,0.89,0.53,0.44,39
-Kathleen Logan,patrickkeller@example.com,001-751-605-4149x6609,0.01,-1449.1,Kathleen Logan,not eligible,67,9,Family with Multiple Children,7601.14,0.98,0.22,0.38,40
-Billy Willis,hjones@example.org,001-929-860-5949x50823,0.49,-2549.85,Billy Willis,eligible,28,10,Family with Multiple Children,9716.41,0.16,0.8,0.06,41
-Tonya Mccarthy,murphyjose@example.com,001-241-304-2753x270,0.0,41834.56,Tonya Mccarthy,not eligible,36,11,Family with Multiple Children,8991.0,0.34,0.05,0.28,42
-Donna Martin,ashleymoore@example.net,+1-768-387-1086,0.5,22698.76,Donna Martin,not eligible,24,18,Single,9586.17,0.26,0.35,0.51,43
-Alexandra Hunt,lisa69@example.net,+1-240-780-1746x781,0.01,44900.76,Alexandra Hunt,eligible,57,5,Family with Multiple Children,4328.53,0.91,0.15,0.08,44
-Lauren Whitaker,vfields@example.com,5322392294,0.57,9233.76,Lauren Whitaker,eligible,46,18,Single,6044.99,0.74,0.06,0.68,45
-David Wilkerson,brendanyork@example.com,001-495-627-6159,0.66,46835.81,David Wilkerson,eligible,54,13,Couple,8235.99,0.94,0.66,0.2,46
-Emily Mitchell,wholmes@example.com,142-587-5541x6899,0.56,20440.65,Emily Mitchell,eligible,62,11,Family with Multiple Children,9950.4,0.03,0.05,0.2,47
-Michael Hanna,sullivanadam@example.org,647.851.2197x8802,0.17,1820.18,Michael Hanna,eligible,43,17,Single parent family,4524.22,0.05,0.32,0.9,48
-Heather May,allen50@example.net,+1-157-578-7116x77315,0.66,6129.49,Heather May,eligible,66,13,Single parent family,1990.9,0.79,0.01,0.89,49
-Pamela Bautista,tuckerkathryn@example.net,285-954-4463,0.07,14233.94,Pamela Bautista,eligible,41,18,Couple,1821.36,0.65,0.78,0.86,50
+Ronald Burton,vpena@example.com,281.957.5502x2766,0.02,13001.43,Ronald Burton,eligible,20,17,Family,6152.31,0.98,0.67,0.57,1
+Mark Krueger,jeremygreen@example.net,113-918-0230x80290,0.03,11089.63,Mark Krueger,not eligible,70,16,Couple,3320.12,0.71,0.72,0.92,2
+Courtney Morales,christopher29@example.net,001-937-409-1509x17100,0.26,30824.41,Courtney Morales,eligible,52,13,Couple,8400.85,0.65,0.98,0.89,3
+Thomas Valdez,timothy25@example.org,(700)178-0840x99893,0.24,24084.34,Thomas Valdez,eligible,32,16,Couple,9899.98,0.63,0.62,0.57,4
+Edwin Carlson,lindsay41@example.net,(767)575-4203x436,0.62,-2794.74,Edwin Carlson,not eligible,19,11,Couple,7254.57,0.39,0.41,0.2,5
+Colleen Fields,hrowe@example.com,001-577-497-0912x07708,0.38,39985.98,Colleen Fields,eligible,27,11,Single,8406.61,0.86,0.7,0.9,6
+Stephen Santana,andreataylor@example.net,001-432-971-9294x79921,0.67,40314.28,Stephen Santana,eligible,29,17,Couple,9828.05,0.13,0.42,0.14,7
+Sarah Sutton,michelle08@example.net,077.041.4921x5403,0.81,5919.05,Sarah Sutton,eligible,43,11,Single parent family,7517.8,0.36,0.14,0.15,8
+Renee Bowen,bethwilson@example.org,001-255-431-2005x188,0.88,31668.67,Renee Bowen,eligible,31,9,Couple,9547.27,0.44,0.29,0.42,9
+Vickie Fletcher,garrettespinoza@example.com,6663556265,0.7,36178.57,Vickie Fletcher,not eligible,45,1,Family,6758.56,0.1,0.21,0.41,10
+Riley Robinson,alexander46@example.net,+1-547-167-9901x762,0.15,14829.47,Riley Robinson,eligible,24,6,Single parent family,3529.01,0.86,0.79,0.75,11
+Luke Day,aprilchapman@example.org,965-265-5068,0.42,18486.81,Luke Day,not eligible,69,7,Couple,5237.82,0.71,0.52,0.64,12
+Angela Diaz,jreed@example.com,+1-061-789-0051x43308,0.03,45668.16,Angela Diaz,not eligible,37,2,Single parent family,7880.62,0.55,0.77,0.97,13
+Anne Fletcher,swhite@example.org,001-805-903-3805x914,0.72,25838.27,Anne Fletcher,eligible,19,18,Couple,8825.68,0.23,0.39,0.05,14
+Tiffany Williams,morrismichael@example.net,(288)001-1861,0.93,39863.14,Tiffany Williams,eligible,42,6,Single,6082.09,0.21,0.47,0.11,15
+Benjamin Pennington,mary42@example.com,1100454119,0.98,2972.87,Benjamin Pennington,eligible,50,19,Single,9477.73,0.42,0.21,0.2,16
+Rebecca Walker,thompsonmegan@example.org,+1-450-424-4554x9412,0.8,41929.96,Rebecca Walker,not eligible,22,2,Single parent family,3879.22,0.37,0.33,0.37,17
+Christopher Shepard,jamesperez@example.com,001-295-292-3186x854,0.11,22615.79,Christopher Shepard,eligible,32,18,Single parent family,8898.6,0.92,0.96,0.78,18
+Cynthia Boyer,victordouglas@example.net,+1-355-400-0182x09186,0.55,16615.57,Cynthia Boyer,not eligible,51,9,Family with Multiple Children,6104.92,0.16,0.17,0.07,19
+Adam Baxter,karen41@example.org,+1-590-399-4633,0.3,9434.81,Adam Baxter,eligible,57,8,Family,2181.33,0.61,0.87,0.74,20
+Laura Guerrero,salinasmichael@example.net,+1-829-226-1254x90152,0.4,49716.72,Laura Guerrero,not eligible,41,2,Single,4923.23,0.72,0.83,0.66,21
+Julie Higgins,rli@example.org,388-471-8236x90702,0.11,5839.57,Julie Higgins,eligible,21,4,Single parent family,8499.99,0.85,0.76,0.7,22
+Cristian Harris,morganmelanie@example.org,267.579.6540,0.9,46806.72,Cristian Harris,not eligible,62,4,Couple,6834.19,0.49,0.02,0.45,23
+Erik Shaw,mezajose@example.org,(336)607-1655,0.05,46848.04,Erik Shaw,eligible,68,2,Single,1431.95,0.53,0.75,0.96,24
+Kimberly Williams,contrerasjulie@example.org,626-189-5762x85970,0.84,28905.46,Kimberly Williams,eligible,31,9,Single parent family,9170.47,0.08,0.11,0.18,25
+Brittany Davis,rachelrodriguez@example.com,0138018525,0.3,30762.52,Brittany Davis,not eligible,56,5,Family,8564.04,0.5,0.97,0.95,26
+Benjamin Ward,weberalexander@example.org,1573472332,0.53,14906.27,Benjamin Ward,not eligible,18,2,Single parent family,4291.34,0.39,0.18,0.24,27
+Erin Keith,stonejesse@example.org,(373)714-8362x883,0.51,2297.76,Erin Keith,not eligible,55,15,Family,5046.86,0.34,0.23,0.46,28
+Erik Stewart,jdavis@example.net,(911)134-5595x28510,0.23,42953.36,Erik Stewart,eligible,27,12,Couple,7365.84,0.55,0.92,0.74,29
+Melissa Campos,kristycook@example.com,+1-561-047-0881x6155,0.21,49470.81,Melissa Campos,not eligible,20,2,Single,7699.77,0.94,0.65,0.71,30
+Curtis Smith,cameron44@example.net,+1-999-260-4306x22894,0.07,37559.31,Curtis Smith,eligible,52,3,Single parent family,3709.61,0.55,0.66,0.97,31
+Jacob Chapman,valerieramsey@example.net,(455)186-0589x4817,0.16,-3043.72,Jacob Chapman,not eligible,70,20,Single,6249.16,0.73,0.98,0.77,32
+Elizabeth Durham,laurenbrown@example.com,+1-168-434-7782x2347,0.77,35776.25,Elizabeth Durham,not eligible,51,15,Single parent family,5028.0,0.15,0.05,0.11,33
+Sheila Kim,ellissamantha@example.org,001-253-344-6974x206,0.06,5861.84,Sheila Kim,eligible,57,3,Single,2796.79,0.68,0.67,0.89,34
+Edward Meyer,alexander88@example.org,+1-717-187-3888,0.79,4477.15,Edward Meyer,eligible,24,6,Single parent family,5111.74,0.41,0.23,0.42,35
+Monica Jones,james71@example.net,(580)256-4879x53310,0.26,24822.47,Monica Jones,not eligible,67,4,Family with Multiple Children,5958.42,0.85,0.97,0.62,36
+Christopher Anderson,rubiolorraine@example.net,(621)401-9882x148,0.36,39485.75,Christopher Anderson,eligible,19,6,Single parent family,4991.09,0.67,0.65,0.76,37
+Danielle Campbell,brad74@example.org,001-397-704-8960x253,1.0,18040.68,Danielle Campbell,not eligible,61,18,Single,9514.78,0.43,0.38,0.21,38
+Bill Smith,erikariley@example.net,(602)003-9744x469,0.41,4141.13,Bill Smith,eligible,51,19,Single parent family,4844.76,0.65,0.82,0.87,39
+Bryan Lowe,gabrielletrujillo@example.net,7959793377,0.25,29391.35,Bryan Lowe,not eligible,18,15,Family,8930.31,0.59,0.92,0.7,40
+Margaret Reid,todd35@example.org,+1-882-601-8402x5222,0.66,38179.4,Margaret Reid,not eligible,53,8,Single,4626.19,0.45,0.2,0.18,41
+Molly Bartlett,breannanelson@example.net,(349)814-8140x3274,0.39,42451.92,Molly Bartlett,not eligible,70,7,Family with Multiple Children,1112.59,0.61,0.97,0.58,42
+Tyler Lopez,christineholmes@example.net,115-660-0243,0.15,20503.97,Tyler Lopez,not eligible,52,14,Single parent family,3430.1,0.59,0.71,0.52,43
+Karen Valdez,brandongill@example.org,(889)098-3074x3343,0.06,8171.07,Karen Valdez,eligible,31,18,Single parent family,4902.25,0.86,0.6,0.78,44
+Laura Smith,robertlewis@example.com,(330)682-2153x55248,0.75,1674.96,Laura Smith,eligible,26,1,Single parent family,8563.99,0.42,0.1,0.17,45
+Tina Love,andrewswanson@example.com,(650)825-2920x0951,0.15,28775.61,Tina Love,eligible,45,12,Single,5214.17,0.53,0.55,0.62,46
+Michelle Parker,cjohnson@example.com,+1-706-781-5771x2334,0.02,20165.11,Michelle Parker,eligible,28,1,Couple,1794.29,0.86,0.61,0.65,47
+Gregory Washington,sandrapotter@example.org,5997353968,0.48,14898.71,Gregory Washington,not eligible,23,14,Couple,5729.22,0.68,0.57,0.97,48
+Michael Arias,christensenstacey@example.net,839-496-4525,0.23,20944.04,Michael Arias,eligible,58,7,Single,6372.17,0.81,0.5,0.99,49
+John Castro,henry71@example.net,+1-909-359-2929x052,0.92,25370.95,John Castro,not eligible,18,4,Family,7964.61,0.31,0.18,0.14,50

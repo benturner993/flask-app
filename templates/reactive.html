@@ -174,6 +174,28 @@ xhr.onreadystatechange = function () {
                 document.getElementById("customer2MF").textContent = customerData.Month_2_Free_Propensity;
                 document.getElementById("customer3MF").textContent = customerData.Month_3_Free_Propensity;
 
+                // Highlight the greatest of customer1MF, customer2MF, or customer3MF in green
+                var month1Propensity = customerData.Month_1_Free_Propensity;
+                var month2Propensity = customerData.Month_2_Free_Propensity;
+                var month3Propensity = customerData.Month_3_Free_Propensity;
+
+                // Reset color for all elements initially
+                document.getElementById("customer1MF").style.color = "";
+                document.getElementById("customer2MF").style.color = "";
+                document.getElementById("customer3MF").style.color = "";
+
+                // Compare each value with the others and set color accordingly
+                if (month1Propensity > month2Propensity && month1Propensity > month3Propensity) {
+                    document.getElementById("customer1MF").style.color = "#1b883c"; // Highlight if greater than others
+                } else if (month2Propensity > month1Propensity && month2Propensity > month3Propensity) {
+                    document.getElementById("customer2MF").style.color = "#1b883c"; // Highlight if greater than others
+                } else if (month3Propensity > month1Propensity && month3Propensity > month2Propensity) {
+                    document.getElementById("customer3MF").style.color = "#1b883c"; // Highlight if greater than others
+                } else {
+                    // This block handles the case when all three options are equal or any of the values are invalid
+                    // Do nothing, leave all colors as default
+                }
+
                 // Show the Know Your Customer and Track Outcomes sections
                 document.getElementById("knowYourCustomer").style.display = "block";
                 document.getElementById("trackOutcomes").style.display = "block";
