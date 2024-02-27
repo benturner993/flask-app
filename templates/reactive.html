@@ -30,12 +30,18 @@
                  style="width: 50px; position: absolute; top: 10px; left: 10px;">
             <div style="margin-bottom: 55px;"></div>
             <h3>Know Your Customer</h3>
-            <p>Name: <span id="customerName" style="font-weight:bold;"></span>&emsp;Age: <span id="customerAge" style="font-weight:bold;"></span>&emsp; Tenure: <span id="customerTenure" style="font-weight:bold;"></span></p>
-            <p>Premium: <b>£</b><span id="annualPremium" style="font-weight:bold;"></span>&emsp; LTV: <b>£</b><span id="customerLifetimeValue" style="font-weight:bold;"></span></p>
+            <p>Name: <span id="customerName" style="font-weight:bold;"></span>&emsp;Age: <span id="customerAge"
+                                                                                               style="font-weight:bold;"></span>&emsp;
+                Tenure: <span id="customerTenure" style="font-weight:bold;"></span></p>
+            <p>Premium: <b>£</b><span id="annualPremium" style="font-weight:bold;"></span>&emsp; LTV: <b>£</b><span
+                    id="customerLifetimeValue" style="font-weight:bold;"></span></p>
             <p>Family Status: <span id="customerFamily" style="font-weight:bold;"></span></p>
             <p>Lapse Propensity: <span id="lapsePropensity" style="font-weight:bold;"></span></p>
-            <p>1MF: <span id="customer1MF" style="font-weight:bold;"></span>&emsp;2MF: <span id="customer2MF" style="font-weight:bold;"></span>&emsp;3MF: <span id="customer3MF" style="font-weight:bold;"></span></p>
+            <p>1MF: <span id="customer1MF" style="font-weight:bold;"></span>&emsp;2MF: <span id="customer2MF"
+                                                                                             style="font-weight:bold;"></span>&emsp;3MF:
+                <span id="customer3MF" style="font-weight:bold;"></span></p>
             <p style="display:none;">Discount Eligibility: <span id="discountEligibility"></span></p>
+            <p id="bestOfferMessage" style="font-weight:bold;"></p>
         </div>
 
         <style>
@@ -81,15 +87,16 @@
         </div>
     </div>
 
-<!-- Reset button placed below the flex container for the two components, initially hidden -->
-<div style="text-align: right; margin-top: 5px;">
-    <button type="button" onclick="window.location.reload();"
-            style="display: none; width: 50px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;
+    <!-- Reset button placed below the flex container for the two components, initially hidden -->
+    <div style="text-align: right; margin-top: 5px;">
+        <button type="button" onclick="window.location.reload();"
+                style="display: none; width: 50px; height: 34px; background-color: #b72900; color: white; font-family: 'Montserrat', sans-serif; font-weight: 500;
                    border: none; padding: 0; position: relative; overflow: hidden;"
-            id="resetButton">
-        <img src="static/reset.png" alt="Reset" style="width: 50%; height: 70%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    </button>
-</div>
+                id="resetButton">
+            <img src="static/reset.png" alt="Reset"
+                 style="width: 50%; height: 70%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        </button>
+    </div>
 </div>
 
 <script>
@@ -187,13 +194,23 @@ xhr.onreadystatechange = function () {
                 // Compare each value with the others and set color accordingly
                 if (month1Propensity > month2Propensity && month1Propensity > month3Propensity) {
                     document.getElementById("customer1MF").style.color = "#1b883c"; // Highlight if greater than others
+                    document.getElementById("customer2MF").style.color = ""; // Reset other colors
+                    document.getElementById("customer3MF").style.color = ""; // Reset other colors
+                    document.getElementById("bestOfferMessage").textContent = customerData.Name + " is " + customerData.Discount_Eligibility + " for 1 Month free.";
                 } else if (month2Propensity > month1Propensity && month2Propensity > month3Propensity) {
                     document.getElementById("customer2MF").style.color = "#1b883c"; // Highlight if greater than others
+                    document.getElementById("customer1MF").style.color = ""; // Reset other colors
+                    document.getElementById("customer3MF").style.color = ""; // Reset other colors
+                    document.getElementById("bestOfferMessage").textContent = customerData.Name + " is " + customerData.Discount_Eligibility + " for 2 Months free.";
                 } else if (month3Propensity > month1Propensity && month3Propensity > month2Propensity) {
                     document.getElementById("customer3MF").style.color = "#1b883c"; // Highlight if greater than others
+                    document.getElementById("customer1MF").style.color = ""; // Reset other colors
+                    document.getElementById("customer2MF").style.color = ""; // Reset other colors
+                    document.getElementById("bestOfferMessage").textContent = customerData.Name + " is " + customerData.Discount_Eligibility + " for 3 Months free.";
                 } else {
                     // This block handles the case when all three options are equal or any of the values are invalid
                     // Do nothing, leave all colors as default
+                    document.getElementById("bestOfferMessage").textContent = "Unable to determine the best offer for " + customerData.Name + ".";
                 }
 
                 // Show the Know Your Customer and Track Outcomes sections
