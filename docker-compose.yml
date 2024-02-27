@@ -1,0 +1,5 @@
+services:
+  reward:
+    image: acrainsten001prod.azureacr.io/reward
+    ports:
+      - '8181:8501'
